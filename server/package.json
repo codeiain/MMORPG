@@ -1,6 +1,6 @@
 {
   "name": "server",
-  "version": "0.0.1",
+  "version": "0.0.01",
   "description": "node server for mmo rpg",
   "main": "server.js",
   "scripts": {
@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/codeiain/MMORPG/issues"
   },
-  "homepage": "https://github.com/codeiain/MMORPG#readme"
+  "homepage": "https://github.com/codeiain/MMORPG#readme",
+  "dependencies": {
+    "blessed": "^0.1.81",
+    "blessed-contrib": "^4.7.5",
+    "socket.io": "^1.7.3"
+  }
 }

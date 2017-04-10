@@ -46,4 +46,12 @@ module.exports = class Utils {
 
     }
 
+    getTemp() {
+        var exec = require('child_process').exec;
+        exec('vcgencmd measure_temp', function callback(error, stdout, stderr) {
+            var currentTemp = stdout.replace('temp=', '').replace('\'C', '');
+            return currentTemp;
+        });
+    }
+
 }

@@ -19,6 +19,7 @@
   "dependencies": {
     "blessed": "^0.1.81",
     "blessed-contrib": "^4.7.5",
+    "colors": "^1.1.2",
     "socket.io": "^1.7.3"
   }
 }

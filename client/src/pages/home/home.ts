@@ -11,6 +11,8 @@ import { Arena } from '../../providers/GameService/Arena'
 })
 export class HomePage {
 
+  private game:Game;
+
   constructor(public navCtrl: NavController, private socket: SocketService, public menuCtrl: MenuController, public events: Events) {
 
 
@@ -32,9 +34,13 @@ export class HomePage {
     });
   }
 
+  fire(event){
+    this.game.player.fire();
+  }
+
   ngAfterViewInit() {
-    let game = new Game()
-    game.init('renderCanvas');
+    this.game = new Game()
+    this.game.init('renderCanvas');
   }
 
 }

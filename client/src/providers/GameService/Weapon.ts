@@ -49,7 +49,7 @@ export class Weapon {
         let _self = this;
         _self.game.scene.registerBeforeRender(function(){
             if (!_self.canFire){
-                //_self._currentFireRate -= BABYLON.Tools.GetDeltaTime();
+                _self._currentFireRate -= _self.game._engine.getDeltaTime();
                 if (_self._currentFireRate < 0){
                     _self.canFire = true;
                     _self._currentFireRate = _self.fireRate;
@@ -63,7 +63,7 @@ export class Weapon {
         this._particalSystem.start();
         var start = this._initialRotation.clone();
         var end = start.clone();
-        end.x += Math.PI/10;
+        end.x += Math.PI/100;
 
         var display = new BABYLON.Animation(
             "fire",
@@ -76,10 +76,10 @@ export class Weapon {
             frame:0,
             value:start
         },{
-            frame:10,
+            frame:100,
             value:end
         },{
-            frame:100,
+            frame:1000,
             value:start
         }];
 

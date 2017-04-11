@@ -21,7 +21,7 @@ export class Target extends BABYLON.Mesh{
     }
 
     explode(){
-        this.mesh.dispose();
+        this.dispose();
     }
 
 }

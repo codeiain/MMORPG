@@ -8,12 +8,13 @@ import { Injectable } from '@angular/core'
 export class Game {
 
     private _canvas: HTMLCanvasElement;
-    private _engine: BABYLON.Engine;
+    public _engine: BABYLON.Engine;
     public scene: BABYLON.Scene;
     private _camera: BABYLON.VirtualJoysticksCamera;
     private _light: BABYLON.PointLight;
     private _loader: BABYLON.AssetsManager;
     public assets: any = {};
+    public player: Player;
     constructor() {
 
     }
@@ -30,7 +31,7 @@ export class Game {
             _self.initMesh(task);
         }
         _self._loader.onFinish = function (tasks) {
-            var player = new Player(_self);
+            _self.player = new Player(_self);
             var arena = new Arena(_self);
 
             // _self.scene.executeWhenReady(function () {
@@ -62,6 +63,16 @@ export class Game {
         new BABYLON.HemisphericLight("hemi", new BABYLON.Vector3(1, 2, 1), scene);
 
         GameUtils.Skydome(scene, '../../assets/shaders/');
+
+        scene.executeWhenReady(function () {
+            //hack to resize the joystick area.
+            var vjcanvas = document.getElementsByTagName("canvas")[1];
+            vjcanvas.style.position = "absolute";
+            vjcanvas.style.top = "50px";
+            vjcanvas.style.width = "90%";
+            vjcanvas.style.height = "85%";
+            vjcanvas.style.border = "red 2pt dashed"
+        });
 
         return scene;
     }

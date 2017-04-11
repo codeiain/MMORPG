@@ -1,9 +1,8 @@
 import BABYLON from 'babylonjs'
 import { Injectable } from '@angular/core'
 import { Game } from './Game'
-declare var Target: any;
+import {Target } from './Target'
 
-@Injectable()
 export class Arena {
 
     private game: Game;
@@ -21,7 +20,7 @@ export class Arena {
             var posX = _self.randomNumber(-_self.size / 2, _self.size / 2);
             var posZ = _self.randomNumber(-_self.size / 2, _self.size / 2);
             var t = new Target(_self.game, posX, posZ);
-        })
+        },1000)
 
         var mm = new BABYLON.FreeCamera("minimap", new BABYLON.Vector3(0, 100, 0), this.game.scene);
         mm.layerMask = 1;

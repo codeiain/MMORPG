@@ -1,6 +1,6 @@
 import BABYLON from 'babylonjs'
 import { Player } from './Player';
-import { Areana } from './Areana';
+import { Arena } from './Arena';
 import { GameUtils } from './GameUtils';
 import { Injectable } from '@angular/core'
 
@@ -13,7 +13,7 @@ export class Game {
     private _camera: BABYLON.VirtualJoysticksCamera;
     private _light: BABYLON.PointLight;
     private _loader: BABYLON.AssetsManager;
-    public assets: any;
+    public assets: any = {};
     constructor() {
 
     }
@@ -31,13 +31,23 @@ export class Game {
         }
         _self._loader.onFinish = function (tasks) {
             var player = new Player(_self);
-            var arena = new Areana(_self);
+            var arena = new Arena(_self);
 
-            _self._engine.runRenderLoop(function(){
+            // _self.scene.executeWhenReady(function () {
+            //     //hack to resize the joystick area.
+            //     var vjcanvas = document.getElementsByTagName("canvas")[1];
+            //     vjcanvas.style.position = "absolute";
+            //     vjcanvas.style.top = "50px";
+            //     vjcanvas.style.width = "90%";
+            //     vjcanvas.style.height = "85%";
+            //     vjcanvas.style.border = "red 2pt dashed"
+            // });
+
+            _self._engine.runRenderLoop(function () {
                 _self.scene.render();
             });
 
-            
+
         }
         _self._loader.load();
     }
@@ -47,9 +57,9 @@ export class Game {
 
         GameUtils.axis(scene, 5);
 
-        scene.clearColor = new BABYLON.Color4(0.8,0.8,0.8, 1);
+        scene.clearColor = new BABYLON.Color4(0.8, 0.8, 0.8, 1);
 
-        new BABYLON.HemisphericLight("hemi", new BABYLON.Vector3(1,2,1), scene);
+        new BABYLON.HemisphericLight("hemi", new BABYLON.Vector3(1, 2, 1), scene);
 
         GameUtils.Skydome(scene, '../../assets/shaders/');
 
@@ -58,8 +68,8 @@ export class Game {
 
     initMesh(task): void {
         this.assets[task.name] = task.loadedMeshes;
-        for (let i = 0; i <task.loadedMeshes.length; i ++){
-            let mesh= task.loadedMeshes[i];
+        for (let i = 0; i < task.loadedMeshes.length; i++) {
+            let mesh = task.loadedMeshes[i];
             mesh.isVisible = false;
         }
     }

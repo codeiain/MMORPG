@@ -12,4 +12,11 @@ page-home {
                 height: 100%;
                 touch-action: none;
             }
+            #viseur {
+                position:absolute;
+                top:50%;
+                left:50%;
+                margin-top:-37px;
+                margin-left:-37px;
+            }
 }

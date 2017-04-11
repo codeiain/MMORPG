@@ -1,19 +1,18 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { NavController, MenuController, Events } from 'ionic-angular';
 import { SocketService } from '../../providers/socket-service/socket-service';
-import { GameMain } from '../../providers/GameService/GameMain'
 import BABYLON from 'babylonjs'
-
+import { Game } from '../../providers/GameService/Game'
+import { Arena } from '../../providers/GameService/Arena'
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-  @ViewChild('renderCanvas') renderCanvas;
-  _gameMain: GameMain;
-  constructor(public navCtrl: NavController, private socket: SocketService, public menuCtrl: MenuController, public events: Events, public gameMain: GameMain) {
-    this._gameMain = gameMain;
+
+  constructor(public navCtrl: NavController, private socket: SocketService, public menuCtrl: MenuController, public events: Events) {
+
 
     events.subscribe('menu:opened', () => {
       var vjcanvas = document.getElementsByTagName("canvas")[1];
@@ -34,9 +33,8 @@ export class HomePage {
   }
 
   ngAfterViewInit() {
-    this._gameMain.init('renderCanvas');
-    this._gameMain.createScene();
-    this._gameMain.animate();
+    let game = new Game()
+    game.init('renderCanvas');
   }
 
 }

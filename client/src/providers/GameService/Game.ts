@@ -13,7 +13,7 @@ export class Game {
     private _camera: BABYLON.VirtualJoysticksCamera;
     private _light: BABYLON.PointLight;
     private _loader: BABYLON.AssetsManager;
-    private _assets: any;
+    public assets: any;
     constructor() {
 
     }
@@ -57,7 +57,7 @@ export class Game {
     }
 
     initMesh(task): void {
-        this._assets[task.name] = task.loadedMeshes;
+        this.assets[task.name] = task.loadedMeshes;
         for (let i = 0; i <task.loadedMeshes.length; i ++){
             let mesh= task.loadedMeshes[i];
             mesh.isVisible = false;

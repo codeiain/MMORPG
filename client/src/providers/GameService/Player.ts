@@ -14,7 +14,7 @@ export class Player {
     private _inertia: number = 0.9;
     private _angularInertia: number = 0;
     private _angularSensibility: number = 1000;
-    private _camera: BABYLON.Camera;
+    public _camera: BABYLON.Camera;
     private _controlEnabled = false;
     private _weapon: Weapon;
 

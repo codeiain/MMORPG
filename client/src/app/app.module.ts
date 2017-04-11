@@ -9,6 +9,9 @@ import { ListPage } from '../pages/list/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SocketService } from '../providers/socket-service/socket-service';
+import { GameMain } from '../providers/GameService/GameMain';
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -26,9 +29,11 @@ import { SocketService } from '../providers/socket-service/socket-service';
     ListPage
   ],
   providers: [
+
     StatusBar,
     SplashScreen,
     SocketService,
+    GameMain,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })

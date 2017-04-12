@@ -43,7 +43,7 @@ export class Player {
         //     }
         // }, false);
 
-        this.initPointerLock();
+        //this.initPointerLock();
 
         var s = BABYLON.Mesh.CreateSphere("player2", 16, 4, this._scene);
         s.position.y = 10;
@@ -62,41 +62,15 @@ export class Player {
         this._scene.activeCamera = this._camera;
     }
 
-    initPointerLock() {
-        var _self = this;
-        let canvas = <HTMLCanvasElement>_self._scene.getEngine().getRenderingCanvas();
-        canvas.addEventListener("click", function (evt) {
-            if (canvas.requestPointerLock) {
-                canvas.requestPointerLock();
-            }
-        }, false);
 
-        let ponterlockChange = function (event) {
-            _self._controlEnabled = (document.pointerLockElement === canvas);
-            if (!_self._controlEnabled) {
-                _self._camera.detachControl(canvas);
-            } else {
-                _self._camera.attachControl(canvas);
-            }
-        };
-
-        document.addEventListener("pointerlockchange", ponterlockChange, false);
-        document.addEventListener("mspointerlockchange", ponterlockChange, false);
-        document.addEventListener("mozpointerlockchange", ponterlockChange, false);
-        document.addEventListener("webkitpointerlockchange", ponterlockChange, false);
-    }
 
     initCamera(): BABYLON.Camera {
-        var cam = new BABYLON.FreeCamera("camera", this._spawnPoint, this._scene);
+        var cam = new BABYLON.VirtualJoysticksCamera("camera", this._spawnPoint, this._scene);
 
         cam.attachControl(<HTMLCanvasElement>this._scene.getEngine().getRenderingCanvas());
         cam.ellipsoid = new BABYLON.Vector3(2, this._height, 2);
         cam.checkCollisions = true;
         cam.applyGravity = true;
-        cam.keysUp = [90];
-        cam.keysDown = [83];
-        cam.keysLeft = [81];
-        cam.keysRight = [68];
         cam.speed = this._speed;
         cam.inertia = this._inertia;
         //cam.angularInertia = this._angularInertia;
@@ -106,8 +80,15 @@ export class Player {
         return cam;
     }
 
-    handleUserMouse(evt, pickInfo:BABYLON.PickingInfo){
+    handleUserMouse(evt, pickInfo: BABYLON.PickingInfo) {
         this._weapon.fire(pickInfo);
     }
 
+    fire() {
+        var width = this._scene.getEngine().getRenderWidth();
+        var height = this._scene.getEngine().getRenderHeight();
+        var pickInfo = this._scene.pick(width / 2, height / 2, null, false, this._camera);
+        this._weapon.fire(pickInfo);
+
+    }
 }

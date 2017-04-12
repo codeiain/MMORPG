@@ -6,6 +6,8 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 
+import { ModalCharacter } from '../pages/home/Modal/ModalCharacter'
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SocketService } from '../providers/socket-service/socket-service';
@@ -16,7 +18,8 @@ import { GameMain } from '../providers/GameService/GameMain';
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    ModalCharacter,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,8 @@ import { GameMain } from '../providers/GameService/GameMain';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    ModalCharacter,
   ],
   providers: [
 

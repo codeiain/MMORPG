@@ -13,7 +13,6 @@ export class HomePage {
 
   constructor(public navCtrl: NavController, private socket: SocketService, public menuCtrl: MenuController, public events: Events, public modalCtrl: ModalController) {
 
-
     events.subscribe('menu:opened', () => {
       var vjcanvas = document.getElementsByTagName("canvas")[1];
       vjcanvas.style.display = "none";
@@ -37,9 +36,13 @@ export class HomePage {
     });
   }
 
+  fire(event){
+    this.game.player.fire();
+  }
+
   ngAfterViewInit() {
-    let game = new Game()
-    game.init('renderCanvas');
+    this.game = new Game()
+    this.game.init('renderCanvas');
   }
 
 }

@@ -73,6 +73,7 @@ export class Player {
         cam.applyGravity = true;
         cam.speed = this._speed;
         cam.inertia = this._inertia;
+
         //cam.angularInertia = this._angularInertia;
         cam.angularSensibility = this._angularSensibility;
         cam.layerMask = 2;

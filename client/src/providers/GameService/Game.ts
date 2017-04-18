@@ -33,17 +33,6 @@ export class Game {
         _self._loader.onFinish = function (tasks) {
             _self.player = new Player(_self);
             var arena = new Arena(_self);
-
-            // _self.scene.executeWhenReady(function () {
-            //     //hack to resize the joystick area.
-            //     var vjcanvas = document.getElementsByTagName("canvas")[1];
-            //     vjcanvas.style.position = "absolute";
-            //     vjcanvas.style.top = "50px";
-            //     vjcanvas.style.width = "90%";
-            //     vjcanvas.style.height = "85%";
-            //     vjcanvas.style.border = "red 2pt dashed"
-            // });
-
             _self._engine.runRenderLoop(function () {
                 _self.scene.render();
             });
@@ -56,7 +45,7 @@ export class Game {
     initScene(): BABYLON.Scene {
         let scene = new BABYLON.Scene(this._engine);
 
-        GameUtils.axis(scene, 5);
+        //GameUtils.axis(scene, 5);
 
         scene.clearColor = new BABYLON.Color4(0.8, 0.8, 0.8, 1);
 

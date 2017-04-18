@@ -1,26 +1,33 @@
 import BABYLON from 'babylonjs'
 import { Injectable } from '@angular/core'
 import { Game } from './Game'
-import {Target } from './Target'
-
+import { Target } from './Target'
+import { Terrain } from'./Terrain'
 export class Arena {
 
     private game: Game;
     private size: number = 100;
-
+    private terrain:Terrain;
 
     constructor(game: Game) {
-        this.game = game;
-        var ground = BABYLON.Mesh.CreateGround("ground", this.size, this.size, 2, this.game.scene);
 
-        this.deactivateSpecular(ground);
-        ground.checkCollisions = true;
+
+        this.game = game;
+        this.terrain = new Terrain(game);
+        
+        //var ground = BABYLON.Mesh.CreateGround("ground", this.size, this.size, 2, this.game.scene);
+
+        this.terrain.update();
+
+
+        //this.deactivateSpecular(ground);
+        //ground.checkCollisions = true;
         var _self = this;
         setInterval(function () {
             var posX = _self.randomNumber(-_self.size / 2, _self.size / 2);
             var posZ = _self.randomNumber(-_self.size / 2, _self.size / 2);
             var t = new Target(_self.game, posX, posZ);
-        },1000)
+        }, 1000)
 
         var mm = new BABYLON.FreeCamera("minimap", new BABYLON.Vector3(0, 100, 0), this.game.scene);
         mm.layerMask = 1;

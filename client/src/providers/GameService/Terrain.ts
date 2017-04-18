@@ -24,7 +24,7 @@ export class Terrain {
         BABYLONX.ShaderBuilder.InitializeEngine();
         this.mat = new BABYLON.StandardMaterial("as", this.game.scene);
         // mat.wireframe = true;
-        this.mat.diffuseTexture = new BABYLON.Texture("../../assets/textures/ground.jpg", this.game.scene);
+        this.mat.diffuseTexture = new BABYLON.Texture("assets/textures/ground.jpg", this.game.scene);
 
     }
 

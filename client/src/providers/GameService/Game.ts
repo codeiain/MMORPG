@@ -26,7 +26,7 @@ export class Game {
         _self.scene = this.initScene();
 
         _self._loader = new BABYLON.AssetsManager(_self.scene);
-        let meshTask = _self._loader.addMeshTask("gun", "", "../../assets/", "gun.babylon");
+        let meshTask = _self._loader.addMeshTask("gun", "", "assets/", "gun.babylon");
         meshTask.onSuccess = function (task) {
             _self.initMesh(task);
         }
@@ -52,7 +52,7 @@ export class Game {
         let light = new BABYLON.HemisphericLight("hemi", new BABYLON.Vector3(0, 1, 0), scene);
          light.intensity = 0.7;
 
-        GameUtils.Skydome(scene, '../../assets/shaders/');
+        GameUtils.Skydome(scene, 'assets/shaders/');
 
         scene.executeWhenReady(function () {
             //hack to resize the joystick area.

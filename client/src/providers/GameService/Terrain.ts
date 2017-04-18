@@ -14,7 +14,11 @@ export class Terrain {
     time = 0;
     constructor(game: Game) {
         this.game = game;
-
+        this.game.scene.fogMode = BABYLON.Scene.FOGMODE_LINEAR;
+        this.game.scene.fogColor = new BABYLON.Color3(0.9, 0.9, 0.85);
+        this.game.scene.fogDensity = 0.01;
+            this.game.scene.fogStart = 20.0;
+    this.game.scene.fogEnd = 300.0;
         this.GB = BABYLONX.GeometryBuilder;
         BABYLONX.GeometryBuilder.InitializeEngine();
         BABYLONX.ShaderBuilder.InitializeEngine();
@@ -64,7 +68,7 @@ export class Terrain {
         var lastPos = { x: 0, z: 0 };
         var _self = this;
         this.game.scene.registerBeforeRender(() => {
-            let camera:any = _self.game.scene.cameras[0];
+            let camera: any = _self.game.scene.cameras[0];
 
             var dis = Math.sqrt(Math.pow(lastPos.x - camera.position.x, 2.) +
                 Math.pow(lastPos.z - camera.position.z, 2.));

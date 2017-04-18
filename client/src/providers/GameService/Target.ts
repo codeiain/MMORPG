@@ -6,9 +6,9 @@ import { Game } from './Game'
 export class Target extends BABYLON.Mesh{
 
     private game: Game;
-    private mesh: BABYLON.Mesh;
+    //private mesh: BABYLON.Mesh;
 
-    constructor(game:Game, posX:number, posZ:number){
+    constructor(game:Game, posX:number, posZ:number, posY:number){
         super("target", game.scene);
         var vd = BABYLON.VertexData.CreateSphere(16);
         vd.applyToMesh(this, false);

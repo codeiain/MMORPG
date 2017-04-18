@@ -49,7 +49,8 @@ export class Game {
 
         scene.clearColor = new BABYLON.Color4(0.8, 0.8, 0.8, 1);
 
-        new BABYLON.HemisphericLight("hemi", new BABYLON.Vector3(1, 2, 1), scene);
+        let light = new BABYLON.HemisphericLight("hemi", new BABYLON.Vector3(0, 1, 0), scene);
+         light.intensity = 0.7;
 
         GameUtils.Skydome(scene, '../../assets/shaders/');
 

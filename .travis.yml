@@ -8,6 +8,7 @@ node_js:
 matrix:
   include:
     - os: osx
+    - os: linux
       env: CC=clang CXX=clang++ npm_config_clang=1
       compiler: clang
 

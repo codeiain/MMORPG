@@ -1,13 +1,13 @@
 language: node_js
 node_js:
-  - "0.11"
-  - "0.10"
+  - "0.12"
 env:
   - TEST_DIR=client
 script: 
   - cd $TEST_DIR
   - npm install -g ionic cordova
   - npm install
+  - cordova platform add browser
   - ionic build browser
   - npm run-script electron dist
 notifications:

@@ -1,11 +1,49 @@
+sudo: required
+dist: trusty
+
 language: node_js
 node_js:
-  - "0.11"
-  - "0.10"
-env:
-  - TEST_DIR=client
-  - TEST_DIR=server
-script: cd $TEST_DIR && npm install
+  - "0.12"
+
+cache:
+  directories:
+    - node_modules
+
+matrix:
+  include:
+    - os: osx
+    - os: linux
+      env: CC=clang CXX=clang++ npm_config_clang=1
+      compiler: clang
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
+      - icnsutils
+      - graphicsmagick
+      - libgnome-keyring-dev
+      - xz-utils
+      - xorriso
+      - xvfb
+
+install:
+  - nvm install 6
+  - npm install electron-builder@next
+  - npm install ionic cordova
+  - npm install
+  - ionic platform add browser
+  - npm install github-release-notes -g
+
+script:
+  - npm run dist
+  - gren --username=codeiain --repo=MMORPG --override --data-source=commits
+  - gren --username=codeiain --repo=MMORPG --override --data-source=commits --action=changelog --generate --tags=all
+
+
 notifications:
   slack: codeiain:L4zHgsi0hcrNA3s0r8WeuOWG
+  
   

@@ -1,8 +1,0 @@
-{
-  "resolution": "main",
-  "tree": {
-    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/b44bdde79f6f6243cfe09a8e385e72cbc1c002e1/babylonjs/index.d.ts",
-    "raw": "registry:dt/babylonjs#2.3.0+20160513001857",
-    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/b44bdde79f6f6243cfe09a8e385e72cbc1c002e1/babylonjs/index.d.ts"
-  }
-}

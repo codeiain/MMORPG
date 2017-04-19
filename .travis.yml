@@ -5,6 +5,10 @@ language: node_js
 node_js:
   - "0.12"
 
+cache:
+  directories:
+    - node_modules
+
 matrix:
   include:
     - os: osx
@@ -27,8 +31,8 @@ addons:
 
 install:
   - nvm install 6
-  - npm install electron-builder
-  - npm install -g ionic cordova
+  - npm install electron-builder@next
+  - npm install ionic cordova
   - npm install
   - ionic platform add browser
 

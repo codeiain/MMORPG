@@ -4,8 +4,11 @@ node_js:
   - "0.10"
 env:
   - TEST_DIR=client
-  - TEST_DIR=server
-script: cd $TEST_DIR && npm install
+script: 
+  - cd $TEST_DIR
+  - npm install
+  - ionic build browser
+  - npm run-script electron dist
 notifications:
   slack: codeiain:L4zHgsi0hcrNA3s0r8WeuOWG
   

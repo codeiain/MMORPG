@@ -26,8 +26,6 @@ addons:
       - xvfb
 
 install:
-  - cd client
-  - pwd
   - nvm install 6
   - npm install electron-builder@next
   - npm install -g ionic cordova

@@ -9,10 +9,10 @@ export class Controller {
     }
 
     setKeyboardControls(setting: SettingsService) {
-        // cam.keysUp = [90]; // Z
-        // cam.keysDown = [83]; // S
-        // cam.keysLeft = [81]; // Q
-        // cam.keysRight = [68]; // D
+        this.camera.keysUp = [setting.getKeyUp()]; 
+        this.camera.keysDown = [setting.getKeyDown()]; 
+        this.camera.keysLeft = [setting.getKeyLeft()]; 
+        this.camera.keysRight = [setting.getKeyRigh()]; 
     }
 
 

@@ -2,6 +2,7 @@ import BABYLON from 'babylonjs'
 import { Game } from './Game'
 import { Weapon } from './Weapon'
 import { Injectable } from '@angular/core'
+import { Controller } from './Controller'
 
 @Injectable()
 export class Player {
@@ -17,9 +18,10 @@ export class Player {
     public _camera: BABYLON.Camera;
     private _controlEnabled = false;
     private _weapon: Weapon;
-
+    private _controller: Controller;
 
     constructor(game: Game, spawnPoint?: BABYLON.Vector3) {
+
         let _self = this;
         if (!spawnPoint) {
             this._spawnPoint = new BABYLON.Vector3(0, 10, -10);
@@ -72,6 +74,9 @@ export class Player {
         cam.applyGravity = true;
         cam.speed = this._speed;
         cam.inertia = this._inertia;
+
+        this._controller = new Controller(cam);
+        this._controller.setKeyboardControls(this._game.settings)
 
         //cam.angularInertia = this._angularInertia;
         cam.angularSensibility = this._angularSensibility;

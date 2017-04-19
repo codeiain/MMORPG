@@ -16,11 +16,10 @@ export class Game {
     private _loader: BABYLON.AssetsManager;
     public assets: any = {};
     public player: Player;
-    public settings : SettingsService;
 
 
-    constructor(public setting: SettingsService) {
-        this.settings = setting
+    constructor(public settings: SettingsService) {
+
     }
 
     init(canvasElement: string): void {

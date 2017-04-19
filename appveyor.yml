@@ -11,7 +11,10 @@ install:
   - set CI=true
   - npm install -g npm@latest
   - set PATH=%APPDATA%\npm;%PATH%
+  - npm install electron-builder@next
+  - npm install -g ionic cordova
   - npm install
+  - ionic platform add browser
 matrix:
   fast_finish: true
 build: off

@@ -32,8 +32,6 @@ install:
   - npm install electron-builder@next
   - npm install -g ionic cordova
   - npm install
-  - pwd
-  - cd client && cordova platform add browser
   - export DISPLAY=':99.0'
   - Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
 

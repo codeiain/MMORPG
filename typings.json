@@ -1,5 +1,5 @@
 {
   "globalDependencies": {
-    "babylonjs": "registry:dt/babylonjs#2.3.0+20160513001857"
+    "socket.io-client": "registry:dt/socket.io-client#1.4.4+20161116080703"
   }
 }

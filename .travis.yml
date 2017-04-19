@@ -39,8 +39,8 @@ install:
 
 script:
   - npm run dist
-  - gren --data-source=commits
-  - gren --action=changelog
+  - gren --username=codeiain --repo=MMORPG --override --data-source=commits
+  - gren --username=codeiain --repo=MMORPG --override --data-source=commits --action=changelog --generate --tags=all
 
 
 notifications:

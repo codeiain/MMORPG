@@ -55,8 +55,8 @@
   "build": {
     "appId": "org.codeiain.mmo",
     "files": [
-      "www/**.*",
-      "node_modules/**.*",
+      "www/",
+      "node_modules/",
       "package.json",
       "electron.js"
     ],

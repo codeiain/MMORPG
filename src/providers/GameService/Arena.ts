@@ -6,7 +6,7 @@ import { Terrain } from './Terrain'
 export class Arena {
 
     private game: Game;
-    private size: number = 100;
+    private size: number = 1000;
     private terrain: Terrain;
 
     constructor(game: Game) {

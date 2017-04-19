@@ -25,10 +25,6 @@ export class HomePage {
     });
   }
 
-  fire(event) {
-    this.game.player.fire();
-  }
-
   ngAfterViewInit() {
     this.game = new Game(this.settings);
     this.game.init('renderCanvas');

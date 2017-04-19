@@ -32,6 +32,7 @@ install:
   - npm install electron-builder@next
   - npm install -g ionic cordova
   - npm install
+  - npm install shelljs
 
 before_script:
   - export DISPLAY=:99.0

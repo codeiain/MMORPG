@@ -11,13 +11,7 @@ function createWindow() {
     // Create the browser window.
     win = new BrowserWindow({width: 800, height: 600});
 
-    var url = 'http://localhost:8100';
-    var Args = process.argv.slice(2);
-    Args.forEach(function (val) {
-        if (val === "dist") {
-            url = 'file://' + __dirname + '/www/index.html'
-        }
-    });
+    var url = url = 'file://' + __dirname + '/www/index.html';
 
     // and load the index.html of the app.
     win.loadURL(url);

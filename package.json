@@ -2,6 +2,7 @@
   "name": "ionic-hello-world",
   "author": "Ionic Framework",
   "homepage": "http://ionicframework.com/",
+  "email":"codeiain@outlook.com",
   "private": true,
   "version":"0.0.1",
   "scripts": {

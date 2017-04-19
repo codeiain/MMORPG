@@ -1,9 +1,8 @@
 {
-  "name": "ionic-hello-world",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
-  "email":"codeiain@outlook.com",
-  "private": true,
+  "name": "babylonjs-fps",
+  "author": "codeiain <codeiain@outlook.com>",
+  "email": "codeiain@outlook.com",
+  "private": false,
   "version":"0.0.1",
   "scripts": {
     "clean": "ionic-app-scripts clean",

@@ -9,7 +9,8 @@
     "ionic:build": "ionic-app-scripts build",
     "ionic:serve": "ionic-app-scripts serve",
     "electron": "electron .",
-    "electron dist": "electron ."
+    "electron dist": "electron .",
+    "dist": "ionic-app-script build browser && electron dist --publish onTagOrDraft"
   },
   "main": "electron.js",
   "dependencies": {
@@ -37,6 +38,7 @@
   },
   "devDependencies": {
     "@ionic/app-scripts": "1.3.0",
+    "electron-builder": "^17.0.1",
     "typescript": "~2.2.1"
   },
   "cordovaPlugins": [
@@ -48,5 +50,43 @@
     "cordova-plugin-splashscreen"
   ],
   "cordovaPlatforms": [],
-  "description": "client: An Ionic project"
+  "description": "client: An Ionic project",
+  "build": {
+    "appId": "org.breta.MemoryKing",
+    "category": "public.app-category.education",
+    "files": [
+      "dist/",
+      "node_modules/",
+      "static/",
+      "main.js",
+      "index.html",
+      "package.json"
+    ],
+    "dmg": {
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    }
+  },
+  "directories": {
+    "output": "release"
+  }
 }

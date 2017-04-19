@@ -12,7 +12,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SocketService } from '../providers/socket-service/socket-service';
 import { GameMain } from '../providers/GameService/GameMain';
-import {SettingsService} from '../providers/OptionService/SettingsService';
+import {SettingsService} from '../providers/OptionServices/SettingsService';
 
 @NgModule({
   declarations: [

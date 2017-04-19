@@ -16,18 +16,6 @@ export class HomePage {
 
   constructor(public settings: SettingsService, public navCtrl: NavController, private socket: SocketService, public menuCtrl: MenuController, public events: Events, public modalCtrl: ModalController) {
 
-    events.subscribe('menu:opened', () => {
-      var vjcanvas = document.getElementsByTagName("canvas")[1];
-      vjcanvas.style.display = "none";
-    });
-
-    events.subscribe('menu:closed', () => {
-      var ionModal = document.getElementsByTagName("ion-modal")[0];
-      if (!ionModal) {
-        var vjcanvas = document.getElementsByTagName("canvas")[1];
-        vjcanvas.style.display = "block";
-      }
-    });
   }
 
   initSockets() {

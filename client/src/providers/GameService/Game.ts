@@ -55,17 +55,7 @@ export class Game {
         let light = new BABYLON.HemisphericLight("hemi", new BABYLON.Vector3(0, 1, 0), scene);
         light.intensity = 0.7;
 
-        GameUtils.Skydome(scene, 'assets/shaders/');
-
-        scene.executeWhenReady(function () {
-            //hack to resize the joystick area.
-            var vjcanvas = document.getElementsByTagName("canvas")[1];
-            vjcanvas.style.position = "absolute";
-            vjcanvas.style.top = "50px";
-            vjcanvas.style.width = "90%";
-            vjcanvas.style.height = "85%";
-            vjcanvas.style.border = "red 2pt dashed"
-        });
+        GameUtils.Skydome(scene, '../../assets/shaders/');
 
         return scene;
     }

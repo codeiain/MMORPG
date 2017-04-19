@@ -33,7 +33,19 @@ export class Player {
         this._camera = this.initCamera();
         this._weapon = new Weapon(_self._game, _self);
 
-        var canvas = _self._scene.getEngine().getRenderingCanvas();
+        var canvas = <HTMLCanvasElement>_self._scene.getEngine().getRenderingCanvas();
+
+        canvas.addEventListener("click", function (evt) {
+            var width = _self._scene.getEngine().getRenderWidth();
+            var height = _self._scene.getEngine().getRenderHeight();
+
+            //if (_self.controlEnabled) {
+                var pickInfo = _self._scene.pick(width / 2, height / 2, null, false, _self._camera);
+                _self.handleUserMouse(evt, pickInfo);
+            //}
+        }, false);
+
+
 
         // canvas.addEventListener("click", function (evt) {
         //     var width = _this.scene.getEngine().getRenderWidth();
@@ -86,7 +98,7 @@ export class Player {
     }
 
     handleUserMouse(evt, pickInfo: BABYLON.PickingInfo) {
-        this._controller.fire(evt,pickInfo, this._weapon);
+        this._controller.fire(evt, pickInfo, this._weapon);
         //this._weapon.fire(pickInfo);
     }
 

@@ -15,6 +15,7 @@ export class Controller {
         this.camera.keysRight = [setting.getKeyRigh()];
     }
 
+
     PointerLock(canvas: HTMLCanvasElement) {
         //     var _this = this;
         //     // Request pointer lock

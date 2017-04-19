@@ -10,7 +10,7 @@
     "ionic:serve": "ionic-app-scripts serve",
     "electron": "electron .",
     "electron dist": "electron .",
-    "dist": "ionic build browser && electron dist "
+    "dist": "ionic build browser && electron . "
   },
   "main": "electron.js",
   "dependencies": {

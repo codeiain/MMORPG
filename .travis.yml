@@ -6,6 +6,7 @@ env:
   - TEST_DIR=client
 script: 
   - cd $TEST_DIR
+  - npm install -g ionic cordova
   - npm install
   - ionic build browser
   - npm run-script electron dist

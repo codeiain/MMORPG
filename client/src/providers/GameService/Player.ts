@@ -86,7 +86,8 @@ export class Player {
     }
 
     handleUserMouse(evt, pickInfo: BABYLON.PickingInfo) {
-        this._weapon.fire(pickInfo);
+        this._controller.fire(evt,pickInfo, this._weapon);
+        //this._weapon.fire(pickInfo);
     }
 
     fire() {

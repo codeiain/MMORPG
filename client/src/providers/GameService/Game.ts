@@ -3,6 +3,7 @@ import { Player } from './Player';
 import { Arena } from './Arena';
 import { GameUtils } from './GameUtils';
 import { Injectable } from '@angular/core'
+import { SettingsService} from '../OptionServices/SettingsService' 
 
 @Injectable()
 export class Game {
@@ -15,8 +16,11 @@ export class Game {
     private _loader: BABYLON.AssetsManager;
     public assets: any = {};
     public player: Player;
-    constructor() {
+    public settings : SettingsService;
 
+
+    constructor(public setting: SettingsService) {
+        this.settings = setting
     }
 
     init(canvasElement: string): void {
@@ -50,7 +54,7 @@ export class Game {
         scene.clearColor = new BABYLON.Color4(0.8, 0.8, 0.8, 1);
 
         let light = new BABYLON.HemisphericLight("hemi", new BABYLON.Vector3(0, 1, 0), scene);
-         light.intensity = 0.7;
+        light.intensity = 0.7;
 
         GameUtils.Skydome(scene, 'assets/shaders/');
 

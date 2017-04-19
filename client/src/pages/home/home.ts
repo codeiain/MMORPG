@@ -5,6 +5,7 @@ import BABYLON from 'babylonjs'
 import { Game } from '../../providers/GameService/Game'
 import { Arena } from '../../providers/GameService/Arena'
 import { ModalCharacter } from './Modal/ModalCharacter';
+import { SettingsService } from '../../providers/OptionServices/SettingsService'
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -13,7 +14,7 @@ export class HomePage {
 
   private game: Game;
 
-  constructor(public navCtrl: NavController, private socket: SocketService, public menuCtrl: MenuController, public events: Events, public modalCtrl: ModalController) {
+  constructor(public settings: SettingsService, public navCtrl: NavController, private socket: SocketService, public menuCtrl: MenuController, public events: Events, public modalCtrl: ModalController) {
 
     events.subscribe('menu:opened', () => {
       var vjcanvas = document.getElementsByTagName("canvas")[1];
@@ -41,7 +42,7 @@ export class HomePage {
   }
 
   ngAfterViewInit() {
-    this.game = new Game()
+    this.game = new Game(this.settings);
     this.game.init('renderCanvas');
   }
 

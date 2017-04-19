@@ -65,8 +65,7 @@ export class Player {
 
 
     initCamera(): BABYLON.Camera {
-        var cam = new BABYLON.VirtualJoysticksCamera("camera", this._spawnPoint, this._scene);
-
+        var cam = new BABYLON.FreeCamera("camera", this._spawnPoint, this._scene);
         cam.attachControl(<HTMLCanvasElement>this._scene.getEngine().getRenderingCanvas());
         cam.ellipsoid = new BABYLON.Vector3(2, this._height, 2);
         cam.checkCollisions = true;

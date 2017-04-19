@@ -36,7 +36,7 @@ export class GameMain {
         var skybox = BABYLON.Mesh.CreateBox("skyBox", 100.0, this._scene);
         var skyboxMaterial = new BABYLON.StandardMaterial("skyBox", this._scene);
         skyboxMaterial.backFaceCulling = false;
-        skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture("../../assets/textures/skybox", this._scene);
+        skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture("assets/textures/skybox", this._scene);
         skyboxMaterial.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE;
         skyboxMaterial.diffuseColor = new BABYLON.Color3(0, 0, 0);
         skyboxMaterial.specularColor = new BABYLON.Color3(0, 0, 0);
@@ -44,9 +44,9 @@ export class GameMain {
         skybox.material = skyboxMaterial;
         skybox.position = this._camera.position;
 
-        var ground = BABYLON.Mesh.CreateGroundFromHeightMap("ground", "../../assets/textures/heightMap.gif", 100, 100, 100, 0, 10, this._scene, false);
+        var ground = BABYLON.Mesh.CreateGroundFromHeightMap("ground", "assets/textures/heightMap.gif", 100, 100, 100, 0, 10, this._scene, false);
         var groundMaterial = new BABYLON.StandardMaterial("ground", this._scene);
-        groundMaterial.diffuseTexture = new BABYLON.Texture("../../assets/textures/ground.jpg", this._scene);
+        groundMaterial.diffuseTexture = new BABYLON.Texture("assets/textures/ground.jpg", this._scene);
 
         groundMaterial.specularColor = new BABYLON.Color3(0, 0, 0);
         ground.position.y = -2.0;

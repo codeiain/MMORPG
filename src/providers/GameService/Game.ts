@@ -3,7 +3,7 @@ import { Player } from './Player';
 import { Arena } from './Arena';
 import { GameUtils } from './GameUtils';
 import { Injectable } from '@angular/core'
-import { SettingsService} from '../OptionServices/SettingsService' 
+import { SettingsService } from '../OptionServices/SettingsService'
 
 @Injectable()
 export class Game {
@@ -16,7 +16,7 @@ export class Game {
     private _loader: BABYLON.AssetsManager;
     public assets: any = {};
     public player: Player;
-
+    public skyDome: BABYLON.Mesh;
 
     constructor(public settings: SettingsService) {
 
@@ -42,10 +42,12 @@ export class Game {
 
 
         }
+
         _self._loader.load();
     }
 
     initScene(): BABYLON.Scene {
+        let _self = this;
         let scene = new BABYLON.Scene(this._engine);
 
         //GameUtils.axis(scene, 5);
@@ -55,7 +57,12 @@ export class Game {
         let light = new BABYLON.HemisphericLight("hemi", new BABYLON.Vector3(0, 1, 0), scene);
         light.intensity = 0.7;
 
-        GameUtils.Skydome(scene, '../../assets/shaders/');
+        _self.skyDome = GameUtils.Skydome(scene, 'assets/shaders/');
+        scene.registerBeforeRender(function () {
+            if (_self.skyDome != undefined && _self.scene.cameras[0] != undefined) {
+                _self.skyDome.position = _self.scene.cameras[0].position;
+            }
+        });
 
         return scene;
     }

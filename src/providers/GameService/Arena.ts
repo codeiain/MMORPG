@@ -27,30 +27,7 @@ export class Arena {
             var t = new Target(_self.game, posX, posZ, posY);
         }, 1000)
 
-        var mm = new BABYLON.FreeCamera("minimap", new BABYLON.Vector3(0, 100, 0), this.game.scene);
-        mm.layerMask = 1;
-        mm.setTarget(new BABYLON.Vector3(0.1, 0.1, 0.1));
-        mm.mode = BABYLON.Camera.ORTHOGRAPHIC_CAMERA;
 
-        mm.orthoLeft = -this.size / 2;
-        mm.orthoRight = this.size / 2;
-        mm.orthoTop = this.size / 2;
-        mm.orthoBottom = -this.size / 2;
-
-        mm.rotation.x = Math.PI / 2;
-
-        var xstart = 0.8,
-            ystart = 0.75;
-        var width = 0.99 - xstart,
-            height = 1 - ystart;
-
-        mm.viewport = new BABYLON.Viewport(
-            xstart,
-            ystart,
-            width,
-            height
-        );
-        this.game.scene.activeCameras.push(mm);
     }
 
     randomNumber(min, max) {

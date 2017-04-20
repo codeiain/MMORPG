@@ -26,7 +26,7 @@ export class Weapon {
         this.wp.rotation.x = -Math.PI / 2;
         this.wp.rotation.y = Math.PI;
         this.wp.parent = this.player._camera;
-        this.wp.position = new BABYLON.Vector3(0.25, -0.4, 1);
+        this.wp.position = new BABYLON.Vector3(0.25, -0.4, 1.7);
         this.mesh = this.wp;
         this._initialRotation = this.mesh.rotation.clone();
 

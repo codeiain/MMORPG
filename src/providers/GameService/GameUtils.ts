@@ -45,7 +45,7 @@ export class GameUtils {
     }
 
     public static miniMap(game:any, size:number) {
-        var mm = new BABYLON.FreeCamera("minimap", new BABYLON.Vector3(0, 100, 0), this.game.scene);
+        var mm = new BABYLON.FreeCamera("minimap", new BABYLON.Vector3(0, 100, 0), game.scene);
         mm.layerMask = 1;
         mm.setTarget(new BABYLON.Vector3(0.1, 0.1, 0.1));
         mm.mode = BABYLON.Camera.ORTHOGRAPHIC_CAMERA;

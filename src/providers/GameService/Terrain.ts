@@ -11,6 +11,8 @@ export class Terrain {
     private game: Game
     private GB: any;
     private mat: BABYLON.StandardMaterial;
+
+    private mesh :any;
     time = 0;
     constructor(game: Game) {
         this.game = game;
@@ -62,9 +64,15 @@ export class Terrain {
         return ns;
     }
 
+    getHeight(x:number, z:number):number{
+        this.mesh
+        var pickInfo = this.mesh.pick(x, z);
+        return pickInfo.pickedPoint.y;
+    }
+
     update() {
-        var mesh = this.geo1({ seg: 20, size: 1000, x: -500, y: -500 }).toMesh(this.game.scene);
-        mesh.material = this.mat;
+        this.mesh = this.geo1({ seg: 200, size: 1000, x: -500, y: -500 }).toMesh(this.game.scene);
+        this.mesh.material = this.mat;
         var lastPos = { x: 0, z: 0 };
         var _self = this;
         this.game.scene.registerBeforeRender(() => {
@@ -77,21 +85,21 @@ export class Terrain {
                 lastPos.x = camera.position.x;
                 lastPos.z = camera.position.z;
 
-                mesh.dispose();
-                mesh = _self.geo1({ seg: 200, size: 1000, x: -500 + camera.position.x, y: -500 + camera.position.z, }).toMesh(_self.game.scene);
-                mesh.material = _self.mat;
+                _self.mesh.dispose();
+                _self.mesh = _self.geo1({ seg: 200, size: 1000, x: -500 + camera.position.x, y: -500 + camera.position.z, }).toMesh(_self.game.scene);
+                _self.mesh.material = _self.mat;
             }
 
             new BABYLONX.ShaderMaterialHelper().SetUniforms(
                 _self.game.scene.meshes,
                 camera.position,
-                camera._currentTarget,
+                camera.Target,
                 { x: 0, y: 0 },
                 { x: 100, y: 100 },
                 _self.time++);
 
 
-            camera.position.y = 5. + _self.height_Map(camera.position);
+            camera.position.y = 2 + _self.height_Map(camera.position);
         })
 
     }

@@ -93,13 +93,13 @@ export class Player {
         cam.ellipsoid = new BABYLON.Vector3(2, this._height, 2);
         cam.checkCollisions = true;
         cam.applyGravity = true;
-        cam.speed = this._speed;
-        cam.inertia = this._inertia;
-        cam.angularSensibility = this._angularSensibility;
+        //cam.speed = this._speed;
+        //cam.inertia = this._inertia;
+        //cam.angularSensibility = this._angularSensibility;
         this._controller = new Controller(cam);
         this._controller.setKeyboardControls(this._game.settings)
         //cam.angularInertia = this._angularInertia;
-        cam.angularSensibility = this._angularSensibility;
+        //cam.angularSensibility = this._angularSensibility;
         cam.layerMask = 2;
 
         return cam;

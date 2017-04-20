@@ -13,12 +13,6 @@ export class ModalCharacter {
   }
 
   dismiss() {
-    var vjcanvas = document.getElementsByTagName("canvas")[1];
-    vjcanvas.style.display = "block";
     this.viewCtrl.dismiss();
-  }
-  ngAfterViewInit() {
-    var vjcanvas = document.getElementsByTagName("canvas")[1];
-    vjcanvas.style.display = "none";
   }
 }

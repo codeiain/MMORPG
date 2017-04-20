@@ -4,8 +4,9 @@ import { SocketService } from '../../providers/socket-service/socket-service';
 import BABYLON from 'babylonjs'
 import { Game } from '../../providers/GameService/Game'
 import { Arena } from '../../providers/GameService/Arena'
-import { ModalCharacter } from './Modal/ModalCharacter';
+import { ModalIntro } from './Modal/ModalIntro';
 import { SettingsService } from '../../providers/OptionServices/SettingsService'
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -16,6 +17,10 @@ export class HomePage {
 
   constructor(public settings: SettingsService, public navCtrl: NavController, private socket: SocketService, public menuCtrl: MenuController, public events: Events, public modalCtrl: ModalController) {
 
+  }
+  ngOnInit() {
+    const modal = this.modalCtrl.create(ModalIntro);
+    modal.present();
   }
 
   initSockets() {

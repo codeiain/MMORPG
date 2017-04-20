@@ -1,0 +1,47 @@
+modal-Intro {
+
+
+ul {
+	list-style: none;
+	position: relative;	
+	width: 152px;
+	height: 104px;
+	left: 50%;
+	top: 30%;
+	margin-left: -76px}
+
+li {
+	position: absolute;
+	top: 56px;
+	display: block;
+	text-decoration: none;
+	text-align: center;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	background-color: #f1f1f1;
+	border: 1px solid #eee;
+	border-radius: 8px;
+	box-shadow: 0 6px 10px rgba(0,0,0,.3);
+	animation-duration: 1.5s;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite}
+
+li:nth-child(1) {
+	top: 8px;
+	left: 56px;
+}
+
+li:nth-child(2) {
+	left: 8px;
+}
+
+li:nth-child(3) {
+	left: 56px;
+	}
+
+li:nth-child(4) {
+	left: 104px;
+}
+
+}

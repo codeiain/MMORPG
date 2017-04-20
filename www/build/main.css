@@ -24324,7 +24324,6 @@ page-home html, page-home body {
 page-home #renderCanvas {
   width: 100%;
   height: 100%;
-  z-index: 1500;
 }
 
 page-home #viseur {
@@ -24352,4 +24351,52 @@ page-home #fireButton {
   padding: 32px 30px;
   text-decoration: none;
   text-shadow: #854629 0px 1px 0px;
+}
+
+modal-Intro ul {
+  list-style: none;
+  position: relative;
+  width: 152px;
+  height: 104px;
+  left: 50%;
+  top: 30%;
+  margin-left: -76px;
+}
+
+modal-Intro li {
+  position: absolute;
+  top: 56px;
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  background-color: #f1f1f1;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+  -webkit-animation-duration: 1.5s;
+  animation-duration: 1.5s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+modal-Intro li:nth-child(1) {
+  top: 8px;
+  left: 56px;
+}
+
+modal-Intro li:nth-child(2) {
+  left: 8px;
+}
+
+modal-Intro li:nth-child(3) {
+  left: 56px;
+}
+
+modal-Intro li:nth-child(4) {
+  left: 104px;
 }

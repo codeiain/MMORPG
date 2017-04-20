@@ -20,6 +20,7 @@ export class Player {
     private _weapon: Weapon;
     private _controller: Controller;
 
+
     constructor(game: Game, spawnPoint?: BABYLON.Vector3) {
 
         let _self = this;
@@ -33,31 +34,18 @@ export class Player {
         this._camera = this.initCamera();
         this._weapon = new Weapon(_self._game, _self);
 
-        var canvas = <HTMLCanvasElement>_self._scene.getEngine().getRenderingCanvas();
-
+        var canvas = document.getElementById('renderCanvas');
         canvas.addEventListener("click", function (evt) {
             var width = _self._scene.getEngine().getRenderWidth();
             var height = _self._scene.getEngine().getRenderHeight();
 
-            //if (_self.controlEnabled) {
+            if (_self._controlEnabled) {
                 var pickInfo = _self._scene.pick(width / 2, height / 2, null, false, _self._camera);
                 _self.handleUserMouse(evt, pickInfo);
-            //}
+            }
         }, false);
 
-
-
-        // canvas.addEventListener("click", function (evt) {
-        //     var width = _this.scene.getEngine().getRenderWidth();
-        //     var height = _this.scene.getEngine().getRenderHeight();
-
-        //     if (_this.controlEnabled) {
-        //         var pickInfo = _this.scene.pick(width / 2, height / 2, null, false, _this.camera);
-        //         _this.handleUserMouse(evt, pickInfo);
-        //     }
-        // }, false);
-
-        //this.initPointerLock();
+        this.initPointerLock();
 
         var s = BABYLON.Mesh.CreateSphere("player2", 16, 4, this._scene);
         s.position.y = 10;
@@ -75,7 +63,28 @@ export class Player {
         this._scene.activeCameras.push(this._camera);
         this._scene.activeCamera = this._camera;
     }
+    initPointerLock() {
+        // Request pointer lock
+        var _this = this;
+        var canvas = <any>this._scene.getEngine().getRenderingCanvas();
+        canvas.addEventListener("click", function (evt) {
+            canvas.requestPointerLock = canvas.requestPointerLock || canvas.msRequestPointerLock || canvas.mozRequestPointerLock || canvas.webkitRequestPointerLock;
+            if (canvas.requestPointerLock) {
+                canvas.requestPointerLock();
+            }
+        }, false);
 
+        // Event listener when the pointerlock is updated.
+        var pointerlockchange = function (event) {
+            _this._controlEnabled = (document.pointerLockElement === canvas);
+            if (!_this._controlEnabled) {
+                _this._camera.detachControl(canvas);
+            } else {
+                _this._camera.attachControl(canvas);
+            }
+        };
+        document.addEventListener("pointerlockchange", pointerlockchange, false);
+    }
 
 
     initCamera(): BABYLON.Camera {
@@ -86,10 +95,9 @@ export class Player {
         cam.applyGravity = true;
         cam.speed = this._speed;
         cam.inertia = this._inertia;
-
+        cam.angularSensibility = this._angularSensibility;
         this._controller = new Controller(cam);
         this._controller.setKeyboardControls(this._game.settings)
-
         //cam.angularInertia = this._angularInertia;
         cam.angularSensibility = this._angularSensibility;
         cam.layerMask = 2;
@@ -98,15 +106,9 @@ export class Player {
     }
 
     handleUserMouse(evt, pickInfo: BABYLON.PickingInfo) {
-        this._controller.fire(evt, pickInfo, this._weapon);
-        //this._weapon.fire(pickInfo);
-    }
-
-    fire() {
-        var width = this._scene.getEngine().getRenderWidth();
-        var height = this._scene.getEngine().getRenderHeight();
-        var pickInfo = this._scene.pick(width / 2, height / 2, null, false, this._camera);
+        //this._controller.fire(evt, pickInfo, this._weapon);
         this._weapon.fire(pickInfo);
-
     }
+
+
 }

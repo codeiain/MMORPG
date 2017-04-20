@@ -17,8 +17,8 @@ export class Terrain {
         this.game.scene.fogMode = BABYLON.Scene.FOGMODE_LINEAR;
         this.game.scene.fogColor = new BABYLON.Color3(0.9, 0.9, 0.85);
         this.game.scene.fogDensity = 0.01;
-            this.game.scene.fogStart = 20.0;
-    this.game.scene.fogEnd = 300.0;
+        this.game.scene.fogStart = 20.0;
+        this.game.scene.fogEnd = 300.0;
         this.GB = BABYLONX.GeometryBuilder;
         BABYLONX.GeometryBuilder.InitializeEngine();
         BABYLONX.ShaderBuilder.InitializeEngine();

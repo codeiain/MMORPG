@@ -5,10 +5,10 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class SettingsService {
 
-    public KeyUp: number = 119;
-    public KeyDown: number =115;
-    public KeyLeft: number = 97;
-    public KeyRight: number = 100;
+    public KeyUp: number = 87;
+    public KeyDown: number = 83;
+    public KeyLeft: number = 65;
+    public KeyRight: number = 68;
 
 
     constructor() {

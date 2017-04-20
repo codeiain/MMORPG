@@ -7,7 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 
 import { ModalCharacter } from '../pages/home/Modal/ModalCharacter'
-
+import { ModalIntro } from '../pages/home/Modal/ModalIntro';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { SocketService } from '../providers/socket-service/socket-service';
@@ -20,6 +20,7 @@ import {SettingsService} from '../providers/OptionServices/SettingsService';
     HomePage,
     ListPage,
     ModalCharacter,
+    ModalIntro,
   ],
   imports: [
     BrowserModule,
@@ -31,9 +32,9 @@ import {SettingsService} from '../providers/OptionServices/SettingsService';
     HomePage,
     ListPage,
     ModalCharacter,
+    ModalIntro,
   ],
   providers: [
-
     StatusBar,
     SplashScreen,
     SocketService,

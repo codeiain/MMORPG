@@ -38,7 +38,7 @@ install:
   - npm install github-release-notes -g
 
 script:
-  - npm run dist
+  - if [ $TRAVIS_BRANCH = 'master' ]; npm run dist; fi
   - gren --username=codeiain --repo=MMORPG --override --data-source=commits
   - gren --username=codeiain --repo=MMORPG --override --data-source=commits --action=changelog --generate --tags=all
 

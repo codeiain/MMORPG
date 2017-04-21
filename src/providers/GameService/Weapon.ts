@@ -16,6 +16,8 @@ export class Weapon {
     private canFire = true;
     private _scene: BABYLON.Scene;
     private _particalSystem: BABYLON.ParticleSystem;
+    private _bullets: any = new Array();
+    private _bulletdistance = 300;
 
     constructor(game: Game, player: Player) {
         this.game = game;
@@ -55,8 +57,32 @@ export class Weapon {
                     _self._currentFireRate = _self.fireRate;
                 }
             }
+
+            if (_self._bullets != undefined) {
+                _self._bullets.forEach(element => {
+
+                    if (_self.isPossative(element.mesh.position.z)) {
+                        element.mesh.position.z -= 0.1
+                    } else {
+                        element.mesh.position.z += 0.1
+                    }
+
+                    if (_self.isPossative(element.mesh.position.x)) {
+                        element.mesh.position.x -= 0.1
+                    } else {
+                        element.mesh.position.x += 0.1
+                    }
+                });
+            }
         });
 
+    }
+
+    isPossative(value: number): boolean {
+        if (value > 0) {
+            return true;
+        }
+        return false;
     }
 
     animate() {
@@ -95,12 +121,28 @@ export class Weapon {
 
     fire(pickInfo: any) {
         if (this.canFire) {
+            var bullet = BABYLON.Mesh.CreateSphere('bullet', 3, 0.3, this.game.scene);
+            var camera = <BABYLON.TargetCamera>this._scene.cameras[0];
+            var startPos = camera.position;
+
+            bullet.position = new BABYLON.Vector3(startPos.x, startPos.y, startPos.z);
+            bullet.material = new BABYLON.StandardMaterial('texture1', this.game.scene);
+
+            var invView = new BABYLON.Matrix();
+            camera.getViewMatrix().invertToRef(invView);
+            var direction = BABYLON.Vector3.TransformNormal(new BABYLON.Vector3(0, 0, 1), invView);
+
+            direction.normalize();
+
+            this.game.scene.registerBeforeRender(function () {
+                bullet.position.addInPlace(direction);
+            });
+
             if (pickInfo.hit && pickInfo.pickedMesh.name === "target") {
                 pickInfo.pickedMesh.explode();
-            } else {
-                var b = BABYLON.Mesh.CreateBox("box", 0.1, this.game.scene);
-                b.position = pickInfo.pickedPoint.clone();
             }
+
+
             this.animate();
             this.canFire = false;
         } else {

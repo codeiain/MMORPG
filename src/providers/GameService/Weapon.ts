@@ -121,7 +121,13 @@ export class Weapon {
 
     fire(pickInfo: any) {
         if (this.canFire) {
-            var bullet = BABYLON.Mesh.CreateSphere('bullet', 3, 0.3, this.game.scene);
+            //var bullet = BABYLON.Mesh.CreateSphere('bullet', 3, 0.3, this.game.scene);
+
+            var bullet = BABYLON.Mesh.CreateCylinder("cylinder", .3, 0, .3, 16, 1, this.game.scene, false);
+            var cylinder1 = BABYLON.Mesh.CreateCylinder("cylinder", .4, .3, .3, 16, 1, this.game.scene, false);
+            cylinder1.position.y = -.35;
+            cylinder1.parent = bullet;
+            bullet.rotate( new BABYLON.Vector3(0,5,5), BABYLON.Angle.FromDegrees(180).radians());
             var camera = <BABYLON.TargetCamera>this._scene.cameras[0];
             var startPos = camera.position;
 

@@ -19,6 +19,7 @@ export class Game {
     public skyDome: BABYLON.Mesh;
 
     constructor(public settings: SettingsService) {
+        // Resize the babylon engine when the window is resized
 
     }
 
@@ -27,23 +28,28 @@ export class Game {
         _self._canvas = <HTMLCanvasElement>document.getElementById(canvasElement);
         _self._engine = new BABYLON.Engine(_self._canvas, true);
         _self.scene = this.initScene();
-
+        
         _self._loader = new BABYLON.AssetsManager(_self.scene);
         let meshTask = _self._loader.addMeshTask("gun", "", "assets/", "gun.babylon");
         meshTask.onSuccess = function (task) {
             _self.initMesh(task);
         }
         _self._loader.onFinish = function (tasks) {
-            _self.player = new Player(_self);
             var arena = new Arena(_self);
+            _self.player = new Player(_self);
+
             _self._engine.runRenderLoop(function () {
                 _self.scene.render();
             });
-
-
         }
 
         _self._loader.load();
+
+        window.addEventListener("resize", function () {
+            if (_self._engine) {
+                _self._engine.resize();
+            }
+        }, false);
     }
 
     initScene(): BABYLON.Scene {

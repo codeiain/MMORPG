@@ -38,7 +38,7 @@ install:
   - npm install github-release-notes -g
 
 script:
-  - npm run dist
+  - if [ "$TRAVIS_BRANCH" = "master" ]; then ./ci/CreateRelease.sh; fi
   
 notifications:
   slack: codeiain:L4zHgsi0hcrNA3s0r8WeuOWG

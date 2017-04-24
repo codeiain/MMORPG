@@ -39,10 +39,7 @@ install:
 
 script:
   - npm run dist
-  - gren --username=codeiain --repo=MMORPG --override --data-source=commits
-  - gren --username=codeiain --repo=MMORPG --override --data-source=commits --action=changelog --generate --tags=all
-
-
+  
 notifications:
   slack: codeiain:L4zHgsi0hcrNA3s0r8WeuOWG
   

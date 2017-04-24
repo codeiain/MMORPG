@@ -93,6 +93,7 @@ export class Player {
         cam.ellipsoid = new BABYLON.Vector3(2, this._height, 2);
         cam.checkCollisions = true;
         cam.applyGravity = true;
+        cam.setTarget(BABYLON.Vector3.Zero());
         //cam.speed = this._speed;
         //cam.inertia = this._inertia;
         //cam.angularSensibility = this._angularSensibility;

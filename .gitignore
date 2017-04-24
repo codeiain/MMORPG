@@ -41,3 +41,9 @@ jspm_packages
 release/
 
 www/
+
+*.d.ts
+*.js.map
+src/app/*.js
+src/pages/**/**/*.js
+src/providers/**/*.js

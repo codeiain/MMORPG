@@ -69,9 +69,10 @@ export class Terrain {
     }
 
     update() {
-        this.mesh = this.geo1({ seg: 200, size: 1000, x: -500, y: -500 }).toMesh(this.game.scene);
+        this.mesh = this.geo1({ seg: 250, size: 1000, x: -500, y: -500 }).toMesh(this.game.scene);
         this.mesh.name = "ground";
         this.mesh.material = this.mat;
+        
         //this.mesh.wireframe = true;
         var lastPos = { x: 0, z: 0 };
         var _self = this;
@@ -86,7 +87,7 @@ export class Terrain {
                 lastPos.z = camera.position.z;
 
                 _self.mesh.dispose();
-                _self.mesh = _self.geo1({ seg: 200, size: 1000, x: -500 + camera.position.x, y: -500 + camera.position.z, }).toMesh(_self.game.scene);
+                _self.mesh = _self.geo1({ seg: 250, size: 1000, x: -500 + camera.position.x, y: -500 + camera.position.z, }).toMesh(_self.game.scene);
                 _self.mesh.name = "ground";
                 _self.mesh.material = _self.mat;
                 //_self.mesh.wireframe = true;

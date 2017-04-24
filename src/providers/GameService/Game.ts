@@ -26,7 +26,7 @@ export class Game {
         _self._canvas = <HTMLCanvasElement>document.getElementById(canvasElement);
         _self._engine = new BABYLON.Engine(_self._canvas, true);
         _self.scene = this.initScene();
-        
+
         _self._loader = new BABYLON.AssetsManager(_self.scene);
         let meshTask = _self._loader.addMeshTask("gun", "", "assets/", "gun.babylon");
         meshTask.onSuccess = function (task) {
@@ -55,9 +55,9 @@ export class Game {
         let scene = new BABYLON.Scene(this._engine);
 
         //GameUtils.axis(scene, 5);
-
+        scene.collisionsEnabled = true;
         scene.clearColor = new BABYLON.Color4(0.8, 0.8, 0.8, 1);
-
+        scene.gravity = new BABYLON.Vector3(0, -9.81, 0);
         let light = new BABYLON.HemisphericLight("hemi", new BABYLON.Vector3(0, 1, 0), scene);
         light.intensity = 0.7;
 

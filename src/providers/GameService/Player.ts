@@ -14,7 +14,9 @@ export class Player {
     private _controlEnabled = false;
     private _weapon: Weapon;
     private _controller: Controller;
-
+    private _speed: number = 1;
+    private _inertia: number = 0.9;
+    private _angularSensibility: number = 1000;
 
     constructor(game: Game, spawnPoint?: BABYLON.Vector3) {
 
@@ -85,13 +87,13 @@ export class Player {
     initCamera(): BABYLON.Camera {
         var cam = new BABYLON.FreeCamera("camera", this._spawnPoint, this._scene);
         cam.attachControl(<HTMLCanvasElement>this._scene.getEngine().getRenderingCanvas());
-        cam.ellipsoid = new BABYLON.Vector3(2, this._height, 2);
+        cam.ellipsoid = new BABYLON.Vector3(2, 2, 2);
         cam.checkCollisions = true;
         cam.applyGravity = true;
-        cam.setTarget(BABYLON.Vector3.Zero());
-        //cam.speed = this._speed;
-        //cam.inertia = this._inertia;
-        //cam.angularSensibility = this._angularSensibility;
+        cam.speed = this._speed;
+        cam.inertia = this._inertia;
+        cam.angularSensibility = this._angularSensibility;
+
         this._controller = new Controller(cam);
         this._controller.setKeyboardControls(this._game.settings)
         //cam.angularInertia = this._angularInertia;

@@ -12,7 +12,7 @@ export class Target extends BABYLON.Mesh{
         this.checkCollisions = true;
         var _self = this;
         game.scene.registerBeforeRender(function(){
-            _self.rotation.y +=0.01;
+           
         })
     }
 

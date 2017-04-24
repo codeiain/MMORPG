@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core'
 import { Game } from './Game'
 import { Player } from './Player'
 
+
 @Injectable()
 export class Weapon {
 
@@ -133,26 +134,49 @@ export class Weapon {
 
             bullet.position = new BABYLON.Vector3(startPos.x, startPos.y, startPos.z);
             bullet.material = new BABYLON.StandardMaterial('texture1', this.game.scene);
-
+            bullet.checkCollisions = true;
             var invView = new BABYLON.Matrix();
             camera.getViewMatrix().invertToRef(invView);
             var direction = BABYLON.Vector3.TransformNormal(new BABYLON.Vector3(0, 0, 1), invView);
 
             direction.normalize();
-
+            var _self = this;
             this.game.scene.registerBeforeRender(function () {
+                var skybox = _self.game.scene.getMeshByName("skyBox");
+                var ground = _self.game.scene.getMeshByName("ground");
+                //if (balloon2.intersectsMesh(plan2, true)) {
                 bullet.position.addInPlace(direction);
+
+
+                if (!bullet.intersectsMesh(skybox, true)) {
+                     //console.log("hit");
+                     bullet.dispose();
+                }
+                if (!bullet.intersectsMesh(ground,true)){
+                    bullet.dispose();
+                    //console.log('hit ground');
+                }
+
+                var targets = _self.game.scene.meshes.filter(_self.findTargets);
+                for (let x =0; x < targets.length; x++){
+                    if (bullet.intersectsMesh(targets[x],true)){
+                        targets[x].dispose();
+                        bullet.dispose();
+                    }
+                }
+
             });
 
-            if (pickInfo.hit && pickInfo.pickedMesh.name === "target") {
-                pickInfo.pickedMesh.explode();
-            }
-
-
+            //if (pickInfo.hit && pickInfo.pickedMesh.name === "target") {
+              //  pickInfo.pickedMesh.explode();
+            //}
             this.animate();
             this.canFire = false;
         } else {
 
         }
+    }
+    findTargets(element):any{
+        return element.name == "target";
     }
 }

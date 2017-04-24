@@ -42,4 +42,3 @@ script:
 notifications:
   slack: codeiain:L4zHgsi0hcrNA3s0r8WeuOWG
   
-  

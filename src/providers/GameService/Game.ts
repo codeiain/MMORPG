@@ -15,6 +15,7 @@ export class Game {
     public assets: any = {};
     public player: Player;
     public skyDome: BABYLON.Mesh;
+    public octree : BABYLON.Octree<BABYLON.AbstractMesh>;
 
     constructor(public settings: SettingsService) {
         // Resize the babylon engine when the window is resized
@@ -57,7 +58,7 @@ export class Game {
         //GameUtils.axis(scene, 5);
         scene.collisionsEnabled = true;
         scene.clearColor = new BABYLON.Color4(0.8, 0.8, 0.8, 1);
-        scene.gravity = new BABYLON.Vector3(0, -9.81, 0);
+        scene.gravity = new BABYLON.Vector3(0, -1, 0);
         let light = new BABYLON.HemisphericLight("hemi", new BABYLON.Vector3(0, 1, 0), scene);
         light.intensity = 0.7;
 
@@ -67,7 +68,7 @@ export class Game {
                 _self.skyDome.position = _self.scene.cameras[0].position;
             }
         });
-
+        this.octree = scene.createOrUpdateSelectionOctree();
         return scene;
     }
 

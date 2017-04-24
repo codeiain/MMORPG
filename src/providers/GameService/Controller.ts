@@ -3,7 +3,7 @@ import { SettingsService } from '../OptionServices/SettingsService'
 export class Controller {
 
     camera: BABYLON.FreeCamera;
-    canvas
+
 
     constructor(camera: BABYLON.FreeCamera) {
         this.camera = camera;
@@ -15,6 +15,8 @@ export class Controller {
         this.camera.keysLeft = [setting.getKeyLeft()];
         this.camera.keysRight = [setting.getKeyRigh()];
     }
+
+    
 
     fire(evt, pickInfo, weapon) {
         weapon.fire(pickInfo);

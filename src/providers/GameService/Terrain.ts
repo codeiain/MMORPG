@@ -9,7 +9,7 @@ export class Terrain {
     private GB: any;
     private mat: BABYLON.StandardMaterial;
 
-    private mesh :any;
+    private mesh :BABYLON.Mesh;
     time = 0;
     constructor(game: Game) {
         this.game = game;
@@ -62,17 +62,14 @@ export class Terrain {
         return ns;
     }
 
-    getHeight(x:number, z:number):number{
-        this.mesh
-        var pickInfo = this.mesh.pick(x, z);
-        return pickInfo.pickedPoint.y;
-    }
 
     update() {
-        this.mesh = this.geo1({ seg: 250, size: 1000, x: -500, y: -500 }).toMesh(this.game.scene);
+        this.mesh = this.geo1({ seg: 200, size: 1000, x: -500, y: -500 }).toMesh(this.game.scene);
         this.mesh.name = "ground";
         this.mesh.material = this.mat;
-        
+        this.mesh.useOctreeForCollisions = true;
+        this.mesh.checkCollisions = true;
+        this.game.octree.dynamicContent.push(this.mesh);
         //this.mesh.wireframe = true;
         var lastPos = { x: 0, z: 0 };
         var _self = this;
@@ -87,9 +84,12 @@ export class Terrain {
                 lastPos.z = camera.position.z;
 
                 _self.mesh.dispose();
-                _self.mesh = _self.geo1({ seg: 250, size: 1000, x: -500 + camera.position.x, y: -500 + camera.position.z, }).toMesh(_self.game.scene);
+                _self.mesh = _self.geo1({ seg: 200, size: 1000, x: -500 + camera.position.x, y: -500 + camera.position.z, }).toMesh(_self.game.scene);
                 _self.mesh.name = "ground";
                 _self.mesh.material = _self.mat;
+                _self.mesh.useOctreeForCollisions = true;
+                _self.mesh.checkCollisions = true;
+                _self.game.octree.dynamicContent.push(this.mesh);
                 //_self.mesh.wireframe = true;
             }
 
@@ -102,7 +102,7 @@ export class Terrain {
                 _self.time++);
 
 
-            camera.position.y = 2 + _self.height_Map(camera.position);
+            //camera.position.y = 2 + _self.height_Map(camera.position);
         })
 
     }

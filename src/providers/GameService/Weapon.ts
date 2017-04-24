@@ -15,6 +15,7 @@ export class Weapon {
     private _scene: BABYLON.Scene;
     private _particalSystem: BABYLON.ParticleSystem;
     private _bullets: any = new Array();
+    private explosionPS: BABYLON.ParticleSystem;
 
     constructor(game: Game, player: Player) {
         this.game = game;
@@ -116,10 +117,13 @@ export class Weapon {
         })
     }
 
+   
+
+
     fire(pickInfo: any) {
         if (this.canFire) {
             var bullet = BABYLON.Mesh.CreateSphere('bullet', 3, 0.3, this.game.scene);
-
+            this.game.octree.dynamicContent.push(bullet);
             // var bullet = BABYLON.Mesh.CreateCylinder("cylinder", .3, 0, .3, 16, 1, this.game.scene, false);
             // var cylinder1 = BABYLON.Mesh.CreateCylinder("cylinder", .4, .3, .3, 16, 1, this.game.scene, false);
             // cylinder1.position.y = -.35;
@@ -143,19 +147,10 @@ export class Weapon {
                 //if (balloon2.intersectsMesh(plan2, true)) {
                 bullet.position.addInPlace(direction);
 
-
-                if (!bullet.intersectsMesh(skybox, true)) {
-                     //console.log("hit");
-                     bullet.dispose();
-                }
-                if (!bullet.intersectsMesh(ground,true)){
-                    bullet.dispose();
-                    //console.log('hit ground');
-                }
-
                 var targets = _self.game.scene.meshes.filter(_self.findTargets);
-                for (let x =0; x < targets.length; x++){
-                    if (bullet.intersectsMesh(targets[x],true)){
+                for (let x = 0; x < targets.length; x++) {
+                    if (bullet.intersectsMesh(targets[x], true)) {
+                        
                         targets[x].dispose();
                         bullet.dispose();
                     }
@@ -164,7 +159,7 @@ export class Weapon {
             });
 
             //if (pickInfo.hit && pickInfo.pickedMesh.name === "target") {
-              //  pickInfo.pickedMesh.explode();
+            //  pickInfo.pickedMesh.explode();
             //}
             this.animate();
             this.canFire = false;
@@ -172,7 +167,7 @@ export class Weapon {
 
         }
     }
-    findTargets(element):any{
+    findTargets(element): any {
         return element.name == "target";
     }
 }

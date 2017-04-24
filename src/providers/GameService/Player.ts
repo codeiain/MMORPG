@@ -17,12 +17,13 @@ export class Player {
     private _speed: number = 1;
     private _inertia: number = 0.9;
     private _angularSensibility: number = 1000;
+    private _isJumping = false;
 
     constructor(game: Game, spawnPoint?: BABYLON.Vector3) {
 
         let _self = this;
         if (!spawnPoint) {
-            this._spawnPoint = new BABYLON.Vector3(0, 10, -10);
+            this._spawnPoint = new BABYLON.Vector3(0, 50, -10);
         } else {
             this._spawnPoint = spawnPoint;
         }
@@ -60,6 +61,40 @@ export class Player {
         this._scene.activeCameras.push(this._camera);
         this._scene.activeCamera = this._camera;
     }
+
+    cameraJump() {
+        if (!this._isJumping) {
+            this._isJumping = true;
+            var cam = this._scene.cameras[0];
+
+            cam.animations = [];
+
+            var a = new BABYLON.Animation(
+                "a",
+                "position.y", 30,
+                BABYLON.Animation.ANIMATIONTYPE_FLOAT,
+                BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
+
+            // Animation keys
+            var keys = [];
+            keys.push({ frame: 0, value: cam.position.y });
+            keys.push({ frame: 15, value: cam.position.y + 30 });
+            keys.push({ frame: 20, value: cam.position.y });
+            a.setKeys(keys);
+
+            var easingFunction = new BABYLON.CircleEase();
+            easingFunction.setEasingMode(BABYLON.EasingFunction.EASINGMODE_EASEINOUT);
+            a.setEasingFunction(easingFunction);
+
+            cam.animations.push(a);
+
+            this._scene.beginAnimation(cam, 0, 20, false, 1, ()=>{
+                this._isJumping = false;
+            });
+            
+        }
+    }
+
     initPointerLock() {
         // Request pointer lock
         var _this = this;
@@ -93,9 +128,21 @@ export class Player {
         cam.speed = this._speed;
         cam.inertia = this._inertia;
         cam.angularSensibility = this._angularSensibility;
+        var _self = this
+        window.addEventListener("keyup", (event) => {
+            switch (event.keyCode) {
+                case 16:
+                    var b = false;
+                    _self.cameraJump();
+                    break;
+            }
+        }, false);
+
+
 
         this._controller = new Controller(cam);
         this._controller.setKeyboardControls(this._game.settings)
+
         //cam.angularInertia = this._angularInertia;
         //cam.angularSensibility = this._angularSensibility;
         cam.layerMask = 2;

@@ -35,12 +35,10 @@ install:
   - npm install ionic cordova
   - npm install
   - ionic platform add browser
-  - npm install github-release-notes -g
 
 script:
-  - npm run dist
+  - if [ "$TRAVIS_BRANCH" = "master" ]; then ./buildScripts/CreateRelease.sh; fi
   
 notifications:
   slack: codeiain:L4zHgsi0hcrNA3s0r8WeuOWG
-  
   

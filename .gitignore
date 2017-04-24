@@ -47,3 +47,4 @@ www/
 src/app/*.js
 src/pages/**/**/*.js
 src/providers/**/*.js
+platforms/

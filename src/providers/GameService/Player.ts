@@ -1,20 +1,15 @@
 import BABYLON from 'babylonjs'
 import { Game } from './Game'
 import { Weapon } from './Weapon'
-import { Injectable } from '@angular/core'
 import { Controller } from './Controller'
 
-@Injectable()
+
 export class Player {
 
     private _spawnPoint: BABYLON.Vector3;
     private _scene: BABYLON.Scene;
     private _game: Game;
     private _height: number = 2;
-    private _speed: number = 1;
-    private _inertia: number = 0.9;
-    private _angularInertia: number = 0;
-    private _angularSensibility: number = 1000;
     public _camera: BABYLON.Camera;
     private _controlEnabled = false;
     private _weapon: Weapon;

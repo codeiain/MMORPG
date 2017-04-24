@@ -1,12 +1,8 @@
 import BABYLON from 'babylonjs'
-import { Injectable } from '@angular/core'
 import { Game } from './Game'
 
 
 export class Target extends BABYLON.Mesh{
-
-    private game: Game;
-    //private mesh: BABYLON.Mesh;
 
     constructor(game:Game, posX:number, posZ:number, posY:number){
         super("target", game.scene);

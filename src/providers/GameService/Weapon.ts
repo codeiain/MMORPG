@@ -1,10 +1,7 @@
 import BABYLON from 'babylonjs'
-import { Injectable } from '@angular/core'
 import { Game } from './Game'
 import { Player } from './Player'
 
-
-@Injectable()
 export class Weapon {
 
     private game: Game;
@@ -18,7 +15,6 @@ export class Weapon {
     private _scene: BABYLON.Scene;
     private _particalSystem: BABYLON.ParticleSystem;
     private _bullets: any = new Array();
-    private _bulletdistance = 300;
 
     constructor(game: Game, player: Player) {
         this.game = game;

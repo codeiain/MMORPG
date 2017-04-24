@@ -1,7 +1,5 @@
 import BABYLON from 'babylonjs'
-import { Injectable } from '@angular/core';
 
-@Injectable()
 export class GameUtils {
 
     public static axis(scene: BABYLON.Scene, size) {
@@ -40,11 +38,11 @@ export class GameUtils {
         shader.setColor3("bottomColor", BABYLON.Color3.FromInts(240, 240, 255));
         shader.backFaceCulling = false;
         skybox.material = shader;
-
+        //skybox.material.wireframe = true;
         return skybox;
     }
 
-    public static miniMap(game:any, size:number) {
+    public static miniMap(game: any, size: number) {
         var mm = new BABYLON.FreeCamera("minimap", new BABYLON.Vector3(0, 100, 0), game.scene);
         mm.layerMask = 1;
         mm.setTarget(new BABYLON.Vector3(0.1, 0.1, 0.1));
@@ -69,5 +67,12 @@ export class GameUtils {
             height
         );
         game.scene.activeCameras.push(mm);
+    }
+
+    public static height_Map(p) {
+        var ns = Math.max(30., Math.min(80., Math.abs(
+            Math.sin(p.x * 0.01) + Math.cos(p.z * 0.01)) * 100.));
+        ns = -50. + Math.pow(ns - 29., 1.13);
+        return ns;
     }
 }

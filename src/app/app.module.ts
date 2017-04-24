@@ -4,7 +4,6 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
 
 import { ModalCharacter } from '../pages/home/Modal/ModalCharacter'
 import { ModalIntro } from '../pages/home/Modal/ModalIntro';
@@ -18,7 +17,6 @@ import {SettingsService} from '../providers/OptionServices/SettingsService';
   declarations: [
     MyApp,
     HomePage,
-    ListPage,
     ModalCharacter,
     ModalIntro,
   ],
@@ -30,7 +28,6 @@ import {SettingsService} from '../providers/OptionServices/SettingsService';
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage,
     ModalCharacter,
     ModalIntro,
   ],

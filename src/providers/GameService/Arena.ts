@@ -1,8 +1,9 @@
 import BABYLON from 'babylonjs'
-import { Injectable } from '@angular/core'
+
 import { Game } from './Game'
 import { Target } from './Target'
 import { Terrain } from './Terrain'
+
 export class Arena {
 
     private game: Game;
@@ -24,7 +25,7 @@ export class Arena {
             var posX = _self.randomNumber(-_self.size / 2, _self.size / 2);
             var posZ = _self.randomNumber(-_self.size / 2, _self.size / 2);
             var posY = _self.terrain.height_Map(new BABYLON.Vector3(posX, 4, posZ));
-            var t = new Target(_self.game, posX, posZ, posY);
+            new Target(_self.game, posX, posZ, posY);
         }, 1000)
 
 

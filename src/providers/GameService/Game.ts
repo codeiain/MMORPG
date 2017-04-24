@@ -11,8 +11,6 @@ export class Game {
     private _canvas: HTMLCanvasElement;
     public _engine: BABYLON.Engine;
     public scene: BABYLON.Scene;
-    private _camera: BABYLON.VirtualJoysticksCamera;
-    private _light: BABYLON.PointLight;
     private _loader: BABYLON.AssetsManager;
     public assets: any = {};
     public player: Player;
@@ -35,7 +33,7 @@ export class Game {
             _self.initMesh(task);
         }
         _self._loader.onFinish = function (tasks) {
-            var arena = new Arena(_self);
+            new Arena(_self);
             _self.player = new Player(_self);
 
             _self._engine.runRenderLoop(function () {

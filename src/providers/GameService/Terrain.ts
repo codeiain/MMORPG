@@ -1,10 +1,7 @@
 import BABYLON from 'babylonjs'
-import { Injectable } from '@angular/core'
 import { Game } from './Game'
-import { Target } from './Target'
 
 declare var BABYLONX: any;
-
 
 export class Terrain {
 
@@ -16,17 +13,18 @@ export class Terrain {
     time = 0;
     constructor(game: Game) {
         this.game = game;
-        this.game.scene.fogMode = BABYLON.Scene.FOGMODE_LINEAR;
-        this.game.scene.fogColor = new BABYLON.Color3(0.9, 0.9, 0.85);
-        this.game.scene.fogDensity = 0.01;
-        this.game.scene.fogStart = 20.0;
-        this.game.scene.fogEnd = 300.0;
+        // this.game.scene.fogMode = BABYLON.Scene.FOGMODE_LINEAR;
+        // this.game.scene.fogColor = new BABYLON.Color3(0.9, 0.9, 0.85);
+        // this.game.scene.fogDensity = 0.01;
+        // this.game.scene.fogStart = 20.0;
+        // this.game.scene.fogEnd = 300.0;
         this.GB = BABYLONX.GeometryBuilder;
         BABYLONX.GeometryBuilder.InitializeEngine();
         BABYLONX.ShaderBuilder.InitializeEngine();
         this.mat = new BABYLON.StandardMaterial("as", this.game.scene);
         // mat.wireframe = true;
         this.mat.diffuseTexture = new BABYLON.Texture("assets/textures/ground.jpg", this.game.scene);
+        //this.mat.wireframe = true;
 
     }
 
@@ -72,7 +70,9 @@ export class Terrain {
 
     update() {
         this.mesh = this.geo1({ seg: 200, size: 1000, x: -500, y: -500 }).toMesh(this.game.scene);
+        this.mesh.name = "ground";
         this.mesh.material = this.mat;
+        //this.mesh.wireframe = true;
         var lastPos = { x: 0, z: 0 };
         var _self = this;
         this.game.scene.registerBeforeRender(() => {
@@ -87,7 +87,9 @@ export class Terrain {
 
                 _self.mesh.dispose();
                 _self.mesh = _self.geo1({ seg: 200, size: 1000, x: -500 + camera.position.x, y: -500 + camera.position.z, }).toMesh(_self.game.scene);
+                _self.mesh.name = "ground";
                 _self.mesh.material = _self.mat;
+                //_self.mesh.wireframe = true;
             }
 
             new BABYLONX.ShaderMaterialHelper().SetUniforms(

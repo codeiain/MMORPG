@@ -1,9 +1,7 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { ModalController, NavController, MenuController, Events } from 'ionic-angular';
 import { SocketService } from '../../providers/socket-service/socket-service';
-import BABYLON from 'babylonjs'
 import { Game } from '../../providers/GameService/Game'
-import { Arena } from '../../providers/GameService/Arena'
 import { ModalIntro } from './Modal/ModalIntro';
 import { SettingsService } from '../../providers/OptionServices/SettingsService'
 

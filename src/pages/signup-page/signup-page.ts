@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
 import { Auth } from '../../providers/auth';
-import { HomePage } from '../home/home';
+import { CharactersPage } from '../characters/characters';
  
 @Component({
   selector: 'signup-page',
@@ -31,7 +31,7 @@ export class SignupPage {
     this.authService.createAccount(details).then((result) => {
       this.loading.dismiss();
       console.log(result);
-      this.navCtrl.setRoot(HomePage);
+      this.navCtrl.setRoot(CharactersPage);
     }, (err) => {
         this.loading.dismiss();
     });

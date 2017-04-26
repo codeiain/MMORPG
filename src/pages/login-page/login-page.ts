@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
 import { Auth } from '../../providers/auth';
-import { HomePage } from '../home/home';
+import { CharactersPage } from '../characters/characters';
 import { SignupPage } from '../signup-page/signup-page';
  
 @Component({
@@ -26,7 +26,7 @@ export class LoginPage {
         this.authService.checkAuthentication().then((res) => {
             console.log("Already authorized");
             this.loading.dismiss();
-            this.navCtrl.setRoot(HomePage);
+            this.navCtrl.setRoot(CharactersPage);
         }, (err) => {
             console.log("Not already authorized");
             this.loading.dismiss();
@@ -46,7 +46,7 @@ export class LoginPage {
         this.authService.login(credentials).then((result) => {
             this.loading.dismiss();
             console.log(result);
-            this.navCtrl.setRoot(HomePage);
+            this.navCtrl.setRoot(CharactersPage);
         }, (err) => {
             this.loading.dismiss();
             console.log(err);

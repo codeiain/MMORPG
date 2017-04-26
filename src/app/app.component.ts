@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform, Events, ModalController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
+import { LoginPage } from '../pages/login-page/login-page';
 import { HomePage } from '../pages/home/home';
 import { ModalCharacter } from '../pages/home/Modal/ModalCharacter'
 
@@ -12,7 +12,7 @@ import { ModalCharacter } from '../pages/home/Modal/ModalCharacter'
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = LoginPage;
 
   pages: Array<{ title: string, component: any }>;
 

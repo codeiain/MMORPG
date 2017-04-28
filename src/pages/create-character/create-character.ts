@@ -57,6 +57,10 @@ export class CreateCharacter {
       _self.characterService.createCharacter(_self.NewCharcter).then((result) => {
         this.navCtrl.setRoot(CharactersPage);
       }, (err) => {
+        if (err.stats = 422){
+          var reason = JSON.parse(err._body)
+          alert (reason.error);
+        }
         console.log(err);
       });
     });

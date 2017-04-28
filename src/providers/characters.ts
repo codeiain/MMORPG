@@ -8,6 +8,8 @@ export class Characters {
 
   constructor(public http: Http, public authService: Auth) {
 
+
+
   }
 
   createCharacter(character) {
@@ -16,7 +18,7 @@ export class Characters {
       headers.append('Content-Type', 'application/json');
       headers.append('Authorization', this.authService.token);
 
-      this.http.post('http://localhost:9001/api/characters', JSON.stringify(character))
+      this.http.post('http://localhost:9001/api/characters/createCharacter', JSON.stringify(character), {headers: headers})
         .map(res => res.json())
         .subscribe(res => {
           resolve(res);
@@ -26,4 +28,19 @@ export class Characters {
     });
   }
 
+  getChracters(playerId){
+    return new Promise((resolve, reject)=>{
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      headers.append('Authorization', this.authService.token);
+
+      this.http.post('http://localhost:9001/api/characters/getPlayerCharacters', JSON.stringify({playerId:playerId}), {headers: headers})
+        .map(res => res.json())
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
+    });
+  }
 }

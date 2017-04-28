@@ -47,6 +47,7 @@ export class Auth {
           let data = res.json();
           this.token = data.token;
           this.storage.set('token', data.token);
+          this.storage.set('playerId', data.user._id);
           resolve(data);
         }, (err) => {
           reject(err);
@@ -66,6 +67,7 @@ export class Auth {
           let data = res.json();
           this.token = data.token;
           this.storage.set('token', data.token);
+          this.storage.set('playerId', data.user._id);
           resolve(data);
 
           resolve(res.json());

@@ -6,13 +6,57 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>createCharacter</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>New Character</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+    <div class="main-container">
+        <div class="left-container">
 
+        </div>
+        <div class="right-container">
+            <ion-list>
+                <div>
+                    <ion-item class="item-stable" (click)="toggleGroup('name')" [ngClass]="{active: isGroupShown('name')}">
+                        <i class="icon" [ngClass]="isGroupShown('name') ? 'ion-minus' : 'ion-plus'"></i> &nbsp; Character Name
+                    </ion-item>
+                    <ion-item class="item-accordion" [hidden]="!isGroupShown('name')">
+                        <page-create-character-name></page-create-character-name>
+                    </ion-item>
+                </div>
+                <div>
+                    <ion-item class="item-stable" (click)="toggleGroup('race')" [ngClass]="{active: isGroupShown('race')}">
+                        <i class="icon" [ngClass]="isGroupShown('race') ? 'ion-minus' : 'ion-plus'"></i> &nbsp; Character Race
+                    </ion-item>
+                    <ion-item class="item-accordion" [hidden]="!isGroupShown('race')">
+                        <page-create-character-race></page-create-character-race>
+                    </ion-item>
+                </div>
+                <div>
+                    <ion-item class="item-stable" (click)="toggleGroup('class')" [ngClass]="{active: isGroupShown('class')}">
+                        <i class="icon" [ngClass]="isGroupShown('class') ? 'ion-minus' : 'ion-plus'"></i> &nbsp; Character Class
+                    </ion-item>
+                    <ion-item class="item-accordion" [hidden]="!isGroupShown('class')">
+                        <page-create-character-classes></page-create-character-classes>
+                    </ion-item>
+                </div>
+                <div>
+                    <ion-item class="item-stable" (click)="toggleGroup('stats')" [ngClass]="{active: isGroupShown('stats')}">
+                        <i class="icon" [ngClass]="isGroupShown('stats') ? 'ion-minus' : 'ion-plus'"></i> &nbsp; Character Stats
+                    </ion-item>
+                    <ion-item class="item-accordion" [hidden]="!isGroupShown('stats')">
+                        <page-create-character-classes></page-create-character-classes>
+                    </ion-item>
+                </div>
+            </ion-list>
+            <button ion-button icon-left (click)="save()">
+        <ion-icon name="plus"></ion-icon>
+        Save Character
+      </button>
+        </div>
+    </div>
 </ion-content>

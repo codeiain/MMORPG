@@ -24313,6 +24313,118 @@ ion-navbar.toolbar {
   }
 }
 
+page-characters .character-holder {
+  height: 100%;
+  background-color: #FFF;
+  margin: 0;
+  padding: 0;
+}
+
+page-characters div {
+  box-sizing: border-box;
+}
+
+page-characters .main-container {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 75%;
+  min-height: 100%;
+  border: 1px solid red;
+}
+
+page-characters .left-container {
+  -webkit-flex: 0 1 33%;
+  -ms-flex: 0 1 33%;
+  flex: 0 1 33%;
+  min-height: 100%;
+  max-width: 50%;
+  border: 1px solid red;
+  padding: .5em;
+}
+
+page-characters .middle-container {
+  -webkit-flex: 0 1 33%;
+  -ms-flex: 0 1 33%;
+  flex: 0 1 33%;
+  min-height: 100%;
+  max-width: 50%;
+  border: 1px solid red;
+  padding: .5em;
+}
+
+page-characters .right-container {
+  -webkit-flex: 0 1 33%;
+  -ms-flex: 0 1 33%;
+  flex: 0 1 33%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  max-width: 50%;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+page-create-character .character-holder {
+  height: 100%;
+  background-color: #FFF;
+  margin: 0;
+  padding: 0;
+}
+
+page-create-character div {
+  box-sizing: border-box;
+}
+
+page-create-character .main-container {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 75%;
+  min-height: 100%;
+  border: 1px solid red;
+}
+
+page-create-character .left-container {
+  -webkit-flex: 0 1 50%;
+  -ms-flex: 0 1 50%;
+  flex: 0 1 50%;
+  min-height: 100%;
+  max-width: 50%;
+  border: 1px solid red;
+  padding: .5em;
+}
+
+page-create-character .right-container {
+  -webkit-flex: 0 1 50%;
+  -ms-flex: 0 1 50%;
+  flex: 0 1 50%;
+  min-height: 100%;
+  max-width: 50%;
+  border: 1px solid red;
+  padding: .5em;
+}
+
+page-create-character .list .item.item-accordion {
+  line-height: 38px;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: 0.09s all linear;
+}
+
+page-create-character .list .item.item-accordion.ng-hide {
+  line-height: 0px;
+}
+
+page-create-character .list .item.item-accordion.ng-hide-add,
+page-create-character .list .item.item-accordion.ng-hide-remove {
+  display: block !important;
+}
+
 page-home html, page-home body {
   overflow: hidden;
   width: 100%;

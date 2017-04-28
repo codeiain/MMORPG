@@ -1,24 +1,64 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
-/**
- * Generated class for the CreateCharacter page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
-@IonicPage()
+import { Characters } from '../../providers/characters';
+import { iCharcter } from '../../interfaces/iCharacter';
+import { CharactersPage } from '../characters/characters';
+
+import { CreatCharacterName } from './components/name';
+import { CreatCharacterClasses } from './components/classes';
+import { CreatCharacterRace } from './components/race';
+import { CreatCharacterStats } from './components/stats';
+
+
 @Component({
   selector: 'page-create-character',
   templateUrl: 'create-character.html',
 })
 export class CreateCharacter {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  shownGroup = null;
+  NewCharcter: iCharcter;
+
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, public characterService: Characters) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CreateCharacter');
   }
 
+  toggleGroup(group) {
+    if (this.isGroupShown(group)) {
+      this.shownGroup = null;
+    } else {
+      this.shownGroup = group;
+    }
+  };
+  isGroupShown(group) {
+    return this.shownGroup === group;
+  };
+  save() {
+    var _self = this;
+    this.storage.get('playerId').then((value) => {
+      _self.NewCharcter = {
+        name: "test1",
+        playerId: value,
+        Cha: 1,
+        Con: 2,
+        Dex: 3,
+        Int: 4,
+        Str: 5,
+        Wis: 6,
+        Inventory: []
+      }
+
+      _self.characterService.createCharacter(_self.NewCharcter).then((result) => {
+        this.navCtrl.setRoot(CharactersPage);
+      }, (err) => {
+        console.log(err);
+      });
+    });
+  }
 }

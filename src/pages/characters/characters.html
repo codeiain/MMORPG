@@ -6,13 +6,30 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Characters</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>Characters</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="character-holder">
+    <div class="main-container">
+        <div class="left-container">
+            <ion-list inset>
+                <button ion-item *ngFor="let character of characters" (click)="itemSelected(character)">
+    {{ character.name }}
+  </button>
+            </ion-list>
 
+        </div>
+        <div class="middle-container">Middle container</div>
+        <div class="right-container">
+
+            <button ion-button icon-left (click)="newCharacter()">
+        <ion-icon name="plus"></ion-icon>
+        New Character
+      </button>
+        </div>
+    </div>
 </ion-content>

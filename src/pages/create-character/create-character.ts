@@ -23,7 +23,21 @@ export class CreateCharacter {
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, public characterService: Characters) {
+    this.NewCharcter = {
+      name: null,
+      playerId: null,
+      Cha: 0,
+      Con: 0,
+      Dex: 0,
+      Int: 0,
+      Str: 0,
+      Wis: 0,
+      Inventory: []
+    }
+
   }
+
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CreateCharacter');
@@ -40,29 +54,31 @@ export class CreateCharacter {
     return this.shownGroup === group;
   };
   save() {
+    this.validateData();
     var _self = this;
     this.storage.get('playerId').then((value) => {
-      _self.NewCharcter = {
-        name: "test1",
-        playerId: value,
-        Cha: 1,
-        Con: 2,
-        Dex: 3,
-        Int: 4,
-        Str: 5,
-        Wis: 6,
-        Inventory: []
-      }
+      _self.NewCharcter.playerId = value;
 
       _self.characterService.createCharacter(_self.NewCharcter).then((result) => {
         this.navCtrl.setRoot(CharactersPage);
       }, (err) => {
-        if (err.stats = 422){
+        if (err.stats = 422) {
           var reason = JSON.parse(err._body)
-          alert (reason.error);
+          alert(reason.error);
         }
         console.log(err);
       });
     });
   }
+
+  handleUpdateCharacterName(characterName) {
+    this.NewCharcter.name = characterName
+  }
+
+  validateData(){
+    if (this.NewCharcter.name == null){
+      throw Error('Character Name is required');
+    }
+  }
+
 }

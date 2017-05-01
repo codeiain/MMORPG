@@ -25,7 +25,7 @@
                         <i class="icon" [ngClass]="isGroupShown('name') ? 'ion-minus' : 'ion-plus'"></i> &nbsp; Character Name
                     </ion-item>
                     <ion-item class="item-accordion" [hidden]="!isGroupShown('name')">
-                        <page-create-character-name></page-create-character-name>
+                        <page-create-character-name (updateCharacterName)="handleUpdateCharacterName($event)"></page-create-character-name>
                     </ion-item>
                 </div>
                 <div>

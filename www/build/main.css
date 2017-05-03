@@ -24368,6 +24368,10 @@ page-characters .right-container {
   flex-wrap: wrap;
 }
 
+page-create-character .item-md {
+  padding-left: 0px;
+}
+
 page-create-character .character-holder {
   height: 100%;
   background-color: #FFF;
@@ -24423,6 +24427,19 @@ page-create-character .list .item.item-accordion.ng-hide {
 page-create-character .list .item.item-accordion.ng-hide-add,
 page-create-character .list .item.item-accordion.ng-hide-remove {
   display: block !important;
+}
+
+page-create-character-race .item-md {
+  padding-left: 0px;
+}
+
+page-create-character-race .label-md {
+  margin: auto;
+}
+
+page-create-character-race .raceButton {
+  border: 1px solid black;
+  text-align: center;
 }
 
 page-home html, page-home body {

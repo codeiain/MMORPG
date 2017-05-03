@@ -23,14 +23,14 @@ import { CreatCharacterName } from '../pages/create-character/components/name'
 import { CreatCharacterClasses } from '../pages/create-character/components/classes'
 import { CreatCharacterRace } from'../pages/create-character/components/race';
 import { CreatCharacterStats} from '../pages/create-character/components/stats';
-
+import {ModalRace} from '../pages/create-character/modal/ModalRace';
 //Services
 import { SocketService } from '../providers/socket-service/socket-service';
 import { GameMain } from '../providers/GameService/GameMain';
 import { SettingsService } from '../providers/OptionServices/SettingsService';
 import { Auth } from '../providers/auth';
-import { Characters } from '../providers/characters'
-
+import { Characters } from '../providers/characters';
+import { RaceProvider } from '../providers/raceProvider';
 
 @NgModule({
   declarations: [
@@ -45,7 +45,8 @@ import { Characters } from '../providers/characters'
     CreatCharacterName,
     CreatCharacterClasses,
     CreatCharacterRace,
-    CreatCharacterStats
+    CreatCharacterStats,
+    ModalRace
   ],
   imports: [
     BrowserModule,
@@ -63,6 +64,7 @@ import { Characters } from '../providers/characters'
     SignupPage,
     CharactersPage,
     CreateCharacter,
+    ModalRace
   ],
   providers: [
     StatusBar,
@@ -72,6 +74,7 @@ import { Characters } from '../providers/characters'
     SettingsService,
     Auth,
     Characters,
+    RaceProvider,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })

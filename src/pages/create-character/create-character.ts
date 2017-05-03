@@ -22,7 +22,11 @@ export class CreateCharacter {
   NewCharcter: iCharcter;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, public characterService: Characters) {
+  constructor(
+      public navCtrl: NavController, 
+      public navParams: NavParams, 
+      public storage: Storage, 
+      public characterService: Characters) {
     this.NewCharcter = {
       name: null,
       playerId: null,

@@ -1,5 +1,5 @@
 import BABYLON from 'babylonjs'
-import { SettingsService } from '../OptionServices/SettingsService'
+import { SettingsProvider } from '../OptionProviders/SettingsProvider'
 export class Controller {
 
     camera: BABYLON.FreeCamera;
@@ -9,7 +9,7 @@ export class Controller {
         this.camera = camera;
     }
 
-    setKeyboardControls(setting: SettingsService) {
+    setKeyboardControls(setting: SettingsProvider) {
         this.camera.keysUp = [setting.getKeyUp()];
         this.camera.keysDown = [setting.getKeyDown()];
         this.camera.keysLeft = [setting.getKeyLeft()];

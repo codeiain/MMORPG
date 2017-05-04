@@ -30,7 +30,7 @@ import { ModalRace } from '../pages/create-character/modal/ModalRace';
 import { SocketProvider } from '../providers/SocketProviders/SocketProvider';
 import { GameMain } from '../providers/GameService/GameMain';
 
-import { SettingsService } from '../providers/OptionServices/SettingsService';
+import { SettingsProvider } from '../providers/OptionProviders/SettingsProvider';
 import { AuthApiProvider } from '../providers/SystemProviders/AuthApiProvider';
 
 import { CharacterApiProvider } from '../providers/CharacterProviders/CharacterApiProvider';
@@ -77,7 +77,7 @@ import { RaceApiProvider } from '../providers/RaceProviders/RaceApiProvider';
     SplashScreen,
     SocketProvider,
     GameMain,
-    SettingsService,
+    SettingsProvider,
     AuthApiProvider,
     CharacterApiProvider,
     RaceApiProvider,

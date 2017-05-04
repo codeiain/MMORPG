@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
-import { Auth } from '../../providers/auth';
+import { AuthApiProvider } from '../../providers/SystemProviders/AuthApiProvider';
 import { CharactersPage } from '../characters/characters';
  
 @Component({
@@ -13,7 +13,7 @@ export class SignupPage {
   email: string;
   password: string;
   loading:any;
-  constructor(public navCtrl: NavController, public authService: Auth, public loadingCtrl: LoadingController) {
+  constructor(public navCtrl: NavController, public authService: AuthApiProvider, public loadingCtrl: LoadingController) {
     this.loading = loadingCtrl.create({content:'loading...'});
 
   }

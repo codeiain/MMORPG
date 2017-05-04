@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { Characters } from '../../providers/characters';
+import { CharacterApiProvider } from '../../providers/CharacterProviders/CharacterApiProvider';
 import { Storage } from '@ionic/storage';
 import { CreateCharacter } from '../create-character/create-character';
-import { CharacterDisplayService } from '../../providers/CharacterService/characterDisplayService'
+import { CharacterDisplayProvider } from '../../providers/CharacterProviders/CharacterDisplayProvider'
 
 @Component({
   selector: 'page-characters',
@@ -17,9 +17,9 @@ export class CharactersPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public characterService: Characters,
+    public characterService: CharacterApiProvider,
     public storage: Storage,
-    public displayService: CharacterDisplayService
+    public displayService: CharacterDisplayProvider
   ) {
 
   }

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { ModalController, NavController, MenuController, Events } from 'ionic-angular';
-import { SocketService } from '../../providers/socket-service/socket-service';
+import { SocketProvider } from '../../providers/SocketProviders/SocketProvider';
 import { Game } from '../../providers/GameService/Game'
 import { ModalIntro } from './Modal/ModalIntro';
-import { SettingsService } from '../../providers/OptionServices/SettingsService'
+import { SettingsProvider } from '../../providers/OptionProviders/SettingsProvider'
 
 @Component({
   selector: 'page-home',
@@ -13,7 +13,7 @@ export class HomePage {
 
   private game: Game;
 
-  constructor(public settings: SettingsService, public navCtrl: NavController, private socket: SocketService, public menuCtrl: MenuController, public events: Events, public modalCtrl: ModalController) {
+  constructor(public settings: SettingsProvider, public navCtrl: NavController, private socket: SocketProvider, public menuCtrl: MenuController, public events: Events, public modalCtrl: ModalController) {
 
   }
   ngOnInit() {

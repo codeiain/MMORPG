@@ -31,7 +31,7 @@ import { SettingsService } from '../providers/OptionServices/SettingsService';
 import { Auth } from '../providers/auth';
 import { Characters } from '../providers/characters';
 import { RaceProvider } from '../providers/raceProvider';
-
+import { CharacterDisplayService } from '../providers/CharacterService/characterDisplayService';
 @NgModule({
   declarations: [
     MyApp,
@@ -75,6 +75,7 @@ import { RaceProvider } from '../providers/raceProvider';
     Auth,
     Characters,
     RaceProvider,
+    CharacterDisplayService,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })

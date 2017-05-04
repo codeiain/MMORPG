@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core'
 import { Http, Headers } from '@angular/http';
-import { Auth } from './auth';
+import { AuthApiProvider } from '../SystemProviders/AuthApiProvider';
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class RaceApiProvider {
 
-    constructor(public http: Http, public authService: Auth) {
+    constructor(public http: Http, public authService: AuthApiProvider) {
 
     }
 

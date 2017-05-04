@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController } from 'ionic-angular';
-import { RaceProvider } from '../../../providers/raceProvider'
+import { RaceApiProvider } from '../../../providers/RaceProviders/RaceApiProvider'
 import { ModalRace } from '../modal/ModalRace';
 @Component({
     selector: 'page-create-character-race',
@@ -12,7 +12,7 @@ export class CreatCharacterRace {
     grid: Array<Array<string>>;
     matrix:any;
     shownGroup = null;
-    constructor(public raceService: RaceProvider, public modalCtrl: ModalController) {
+    constructor(public raceService: RaceApiProvider, public modalCtrl: ModalController) {
 
     }
     ngOnInit() {

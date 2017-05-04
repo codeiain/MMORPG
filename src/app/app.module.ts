@@ -21,17 +21,23 @@ import { ModalCharacter } from '../pages/home/Modal/ModalCharacter'
 import { ModalIntro } from '../pages/home/Modal/ModalIntro';
 import { CreatCharacterName } from '../pages/create-character/components/name'
 import { CreatCharacterClasses } from '../pages/create-character/components/classes'
-import { CreatCharacterRace } from'../pages/create-character/components/race';
-import { CreatCharacterStats} from '../pages/create-character/components/stats';
-import {ModalRace} from '../pages/create-character/modal/ModalRace';
+import { CreatCharacterRace } from '../pages/create-character/components/race';
+import { CreatCharacterStats } from '../pages/create-character/components/stats';
+import { ModalRace } from '../pages/create-character/modal/ModalRace';
+
+
 //Services
-import { SocketService } from '../providers/socket-service/socket-service';
+import { SocketProvider } from '../providers/SocketProviders/SocketProvider';
 import { GameMain } from '../providers/GameService/GameMain';
-import { SettingsService } from '../providers/OptionServices/SettingsService';
-import { Auth } from '../providers/auth';
-import { Characters } from '../providers/characters';
-import { RaceProvider } from '../providers/raceProvider';
-import { CharacterDisplayService } from '../providers/CharacterService/characterDisplayService';
+
+import { SettingsProvider } from '../providers/OptionProviders/SettingsProvider';
+import { AuthApiProvider } from '../providers/SystemProviders/AuthApiProvider';
+
+import { CharacterApiProvider } from '../providers/CharacterProviders/CharacterApiProvider';
+import { CharacterDisplayProvider } from '../providers/CharacterProviders/CharacterDisplayProvider';
+
+import { RaceApiProvider } from '../providers/RaceProviders/RaceApiProvider';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -69,13 +75,13 @@ import { CharacterDisplayService } from '../providers/CharacterService/character
   providers: [
     StatusBar,
     SplashScreen,
-    SocketService,
+    SocketProvider,
     GameMain,
-    SettingsService,
-    Auth,
-    Characters,
-    RaceProvider,
-    CharacterDisplayService,
+    SettingsProvider,
+    AuthApiProvider,
+    CharacterApiProvider,
+    RaceApiProvider,
+    CharacterDisplayProvider,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })

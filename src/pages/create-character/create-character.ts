@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
-import { Characters } from '../../providers/characters';
+import { CharacterApiProvider } from '../../providers/CharacterProviders/CharacterApiProvider';
 import { iCharcter } from '../../interfaces/iCharacter';
 import { CharactersPage } from '../characters/characters';
 
@@ -26,7 +26,7 @@ export class CreateCharacter {
       public navCtrl: NavController, 
       public navParams: NavParams, 
       public storage: Storage, 
-      public characterService: Characters) {
+      public characterService: CharacterApiProvider) {
     this.NewCharcter = {
       name: null,
       playerId: null,

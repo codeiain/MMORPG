@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 
 
 @Injectable()
-export class SettingsService {
+export class SettingsProvider
+ {
 
     public KeyUp: number = 87;
     public KeyDown: number = 83;

@@ -3,7 +3,7 @@ import BABYLON from 'babylonjs'
 
 
 @Injectable()
-export class CharacterDisplayService {
+export class CharacterDisplayProvider {
 
     private _canvas: HTMLCanvasElement;
     private _engine: BABYLON.Engine;
@@ -44,12 +44,8 @@ export class CharacterDisplayService {
             if (folder == "Female"){
                 _self._camera.radius = 200;
                 newMeshes[0].position.y -=45;
-            }
-            
-            //_self._camera.target = newMeshes[0];
-            //_self._camera.position.z = _self._camera.position.z-100;
-            
-        })
+            }            
+        });
     }
 
 

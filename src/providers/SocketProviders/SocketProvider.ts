@@ -9,7 +9,7 @@ import * as io from 'socket.io-client';
   for more info on providers and Angular 2 DI.
 */
 @Injectable()
-export class SocketService {
+export class SocketProvider {
   socketObserver: any; 
   socketService: any;
   socket: any;

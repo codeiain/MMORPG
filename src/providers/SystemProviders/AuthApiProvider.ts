@@ -10,7 +10,7 @@ import 'rxjs/add/operator/map';
   for more info on providers and Angular 2 DI.
 */
 @Injectable()
-export class Auth {
+export class AuthApiProvider {
 
   public token: any;
 

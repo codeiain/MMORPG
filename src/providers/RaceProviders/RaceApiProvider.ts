@@ -4,7 +4,7 @@ import { Auth } from './auth';
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class RaceProvider {
+export class RaceApiProvider {
 
     constructor(public http: Http, public authService: Auth) {
 

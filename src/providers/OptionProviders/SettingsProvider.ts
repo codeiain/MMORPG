@@ -10,7 +10,6 @@ export class SettingsProvider
     public KeyLeft: number = 65;
     public KeyRight: number = 68;
 
-
     constructor() {
 
     }

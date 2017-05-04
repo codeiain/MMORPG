@@ -45,4 +45,7 @@ page-create-character {
     .list .item.item-accordion.ng-hide-remove {
         display: block !important;
     }
+    div.card-footer>button:nth-child(3) {
+        display: none;
+    }
 }

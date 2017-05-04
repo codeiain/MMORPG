@@ -7,6 +7,7 @@ import { Http, Headers, HttpModule } from '@angular/http';
 import { Storage, IonicStorageModule } from '@ionic/storage';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { FormWizardModule } from 'angular2-wizard';
 
 //Pages
 import { MyApp } from './app.component';
@@ -59,6 +60,7 @@ import { RaceApiProvider } from '../providers/RaceProviders/RaceApiProvider';
     HttpModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
+    FormWizardModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [

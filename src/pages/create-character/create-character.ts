@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
+import { FormWizardModule } from 'angular2-wizard';
 
 import { CharacterApiProvider } from '../../providers/CharacterProviders/CharacterApiProvider';
 import { iCharcter } from '../../interfaces/iCharacter';
@@ -18,15 +19,42 @@ import { CreatCharacterStats } from './components/stats';
 })
 export class CreateCharacter {
 
+  isCompleted: boolean = false;
+
+  onStep1Next(event) {
+    console.log('Step1 - Next');
+  }
+
+  onStep2Next(event) {
+    console.log('Step2 - Next');
+  }
+
+  onStep3Next(event) {
+    console.log('Step3 - Next');
+  }
+  onStep4Next(event){
+    console.log('Step4 - Next');
+  }
+  onStep5Next(event){
+    console.log('Step4 - Next');
+  }
+  onComplete(event) {
+    this.isCompleted = true;
+  }
+
+  onStepChanged(step) {
+    console.log('Changed to ' + step.title);
+  }
+
   shownGroup = null;
   NewCharcter: iCharcter;
 
 
   constructor(
-      public navCtrl: NavController, 
-      public navParams: NavParams, 
-      public storage: Storage, 
-      public characterService: CharacterApiProvider) {
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public storage: Storage,
+    public characterService: CharacterApiProvider) {
     this.NewCharcter = {
       name: null,
       playerId: null,
@@ -79,8 +107,8 @@ export class CreateCharacter {
     this.NewCharcter.name = characterName
   }
 
-  validateData(){
-    if (this.NewCharcter.name == null){
+  validateData() {
+    if (this.NewCharcter.name == null) {
       throw Error('Character Name is required');
     }
   }

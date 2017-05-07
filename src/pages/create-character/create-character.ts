@@ -69,8 +69,6 @@ export class CreateCharacter {
 
   }
 
-
-
   ionViewDidLoad() {
     console.log('ionViewDidLoad CreateCharacter');
   }

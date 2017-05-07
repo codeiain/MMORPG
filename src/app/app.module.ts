@@ -28,6 +28,8 @@ import { ModalRace } from '../pages/create-character/modal/ModalRace';
 
 
 //Services
+import {DragulaModule, DragulaService } from "ng2-dragula/ng2-dragula";
+
 import { SocketProvider } from '../providers/SocketProviders/SocketProvider';
 import { GameMain } from '../providers/GameService/GameMain';
 
@@ -36,7 +38,7 @@ import { AuthApiProvider } from '../providers/SystemProviders/AuthApiProvider';
 
 import { CharacterApiProvider } from '../providers/CharacterProviders/CharacterApiProvider';
 import { CharacterDisplayProvider } from '../providers/CharacterProviders/CharacterDisplayProvider';
-
+import { CharacterStatsProviders } from '../providers/CharacterProviders/CharacterStatsProviders';
 import { RaceApiProvider } from '../providers/RaceProviders/RaceApiProvider';
 
 @NgModule({
@@ -53,7 +55,7 @@ import { RaceApiProvider } from '../providers/RaceProviders/RaceApiProvider';
     CreatCharacterClasses,
     CreatCharacterRace,
     CreatCharacterStats,
-    ModalRace
+    ModalRace,
   ],
   imports: [
     BrowserModule,
@@ -61,6 +63,7 @@ import { RaceApiProvider } from '../providers/RaceProviders/RaceApiProvider';
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
     FormWizardModule,
+    DragulaModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -84,6 +87,8 @@ import { RaceApiProvider } from '../providers/RaceProviders/RaceApiProvider';
     CharacterApiProvider,
     RaceApiProvider,
     CharacterDisplayProvider,
+    CharacterStatsProviders,
+    DragulaService,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })

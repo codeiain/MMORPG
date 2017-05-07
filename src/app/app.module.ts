@@ -24,6 +24,7 @@ import { CreatCharacterName } from '../pages/create-character/components/name'
 import { CreatCharacterClasses } from '../pages/create-character/components/classes'
 import { CreatCharacterRace } from '../pages/create-character/components/race';
 import { CreatCharacterStats } from '../pages/create-character/components/stats';
+import { CreateCharacterGeneder } from '../pages/create-character/components/gender';
 import { ModalRace } from '../pages/create-character/modal/ModalRace';
 
 
@@ -55,6 +56,7 @@ import { RaceApiProvider } from '../providers/RaceProviders/RaceApiProvider';
     CreatCharacterClasses,
     CreatCharacterRace,
     CreatCharacterStats,
+    CreateCharacterGeneder,
     ModalRace,
   ],
   imports: [

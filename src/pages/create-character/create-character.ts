@@ -11,7 +11,7 @@ import { CreatCharacterName } from './components/name';
 import { CreatCharacterClasses } from './components/classes';
 import { CreatCharacterRace } from './components/race';
 import { CreatCharacterStats } from './components/stats';
-
+import { CreateCharacterGeneder } from './components/gender';
 
 @Component({
   selector: 'page-create-character',
@@ -32,10 +32,10 @@ export class CreateCharacter {
   onStep3Next(event) {
     console.log('Step3 - Next');
   }
-  onStep4Next(event){
+  onStep4Next(event) {
     console.log('Step4 - Next');
   }
-  onStep5Next(event){
+  onStep5Next(event) {
     console.log('Step4 - Next');
   }
   onComplete(event) {
@@ -103,6 +103,10 @@ export class CreateCharacter {
 
   handleUpdateCharacterName(characterName) {
     this.NewCharcter.name = characterName
+  }
+
+  handleUpdateCharacterGender(characterGender) {
+    this.NewCharcter.gender = characterGender;
   }
 
   validateData() {

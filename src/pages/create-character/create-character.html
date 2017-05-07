@@ -26,6 +26,7 @@
                 </wizard-step>
                 <wizard-step [title]="'Gender'" (onNext)="onStep2Next($event)">
                     <h1>Gender</h1>
+                    <page-create-character-gender (updateCharacterGender)="handleUpdateCharacterGender($event)"></page-create-character-gender>
                 </wizard-step>
                 <wizard-step [title]="'Stats'" (onNext)="onStep3Next($event)">
                     <h1>Stats</h1>

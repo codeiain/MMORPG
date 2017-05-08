@@ -43,4 +43,20 @@ export class CharacterApiProvider {
         });
     });
   }
+
+  verifyCharacterName(name){
+    return new Promise((resolve, reject)=>{
+      let headers = new Headers
+      headers.append('Content-Type','application/json');
+      headers.append('Authorization', this.authService.token);
+
+      this.http.post('http://localhost:9001/api/characters/validateName', JSON.stringify({characterName:name}), {headers:headers})
+      .map(res=> res.json())
+      .subscribe(res=>{
+        resolve(res);
+      }, (err)=>{
+        reject(err);
+      });
+    });
+  }
 }

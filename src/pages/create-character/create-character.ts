@@ -108,6 +108,32 @@ export class CreateCharacter {
   handleUpdateCharacterGender(characterGender) {
     this.NewCharcter.gender = characterGender;
   }
+  handleUpdateCharacterStats(stats) {
+    for (let x = 0; x < stats.length; x++) {
+      switch (stats[x].key) {
+        case "str":
+        this.NewCharcter.str = stats[x].value;
+        break;
+        case "dex":
+        this.NewCharcter.dex = stats[x].value;
+        break;
+        case "con":
+        this.NewCharcter.con = stats[x].value;
+        break;
+        case "int":
+        this.NewCharcter.int = stats[x].value;
+        break;
+        case "wis":
+        this.NewCharcter.wis = stats[x].value;
+        break;
+        case "cha":
+        this.NewCharcter.cha = stats[x].value;
+        break;
+
+      }
+    }
+
+  }
 
   validateData() {
     if (this.NewCharcter.name == null) {

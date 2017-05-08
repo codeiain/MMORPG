@@ -30,7 +30,7 @@
                 </wizard-step>
                 <wizard-step [title]="'Stats'" (onNext)="onStep3Next($event)">
                     <h1>Stats</h1>
-                    <page-create-character-stats></page-create-character-stats>
+                    <page-create-character-stats (updateCharacterStats)="handleUpdateCharacterStats($event)"></page-create-character-stats>
                 </wizard-step>
                 <wizard-step [title]="'Race'" (onNext)="onStep4Next($event)">
                     <h1>Race</h1>

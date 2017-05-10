@@ -1,0 +1,7 @@
+<div>
+    <div *ngFor="let skill of skills">
+        <span>{{skill.name}}</span>
+        <span [innerHtml]="skill.value"></span>
+        <ion-checkbox [checked]="skill.proficent"></ion-checkbox>
+    </div>
+</div>

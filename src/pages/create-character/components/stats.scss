@@ -8,9 +8,9 @@ page-create-character-stats {
         background: gray;
     }
     .left-container {
-        flex: 0 1 50%;
+        flex: 0 1 80%;
         min-height: 100%;
-        max-width: 50%;
+        max-width: 80%;
         border: 1px solid red;
         padding: .5em;
     }
@@ -22,9 +22,9 @@ page-create-character-stats {
         border: 1px solid red;
     }
     .right-container {
-        flex: 0 1 50%;
+        flex: 0 1 20%;
         min-height: 100%;
-        max-width: 50%;
+        max-width: 20%;
         border: 1px solid red;
         padding: .5em;
     }
@@ -175,9 +175,9 @@ page-create-character-stats {
             }
         }
     }
-    h2 {
+    /*h2 {
         color: #fafafa;
-    }
+    }*/
     ul {
         list-style: none;
         margin: 0;
@@ -232,4 +232,22 @@ page-create-character-stats {
         -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
         filter: alpha(opacity=20);
     }*/
+    .boxSkills {
+        text-align: center;
+        float: left;
+        border: 1px solid;
+        width: 110px;
+        margin: 5px;
+        height: 60px;
+    }
+    .checkbox-icon,
+    .item-cover {
+        margin-top: -25px;
+    }
+    .boxSkills>p {
+        word-wrap: break-word;
+    }
+    .boxSkills>.values {
+        margin-top: -7px;
+    }
 }

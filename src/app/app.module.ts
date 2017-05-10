@@ -25,11 +25,12 @@ import { CreatCharacterClasses } from '../pages/create-character/components/clas
 import { CreatCharacterRace } from '../pages/create-character/components/race';
 import { CreatCharacterStats } from '../pages/create-character/components/stats';
 import { CreateCharacterGeneder } from '../pages/create-character/components/gender';
+import { CreateCharacterSkills } from '../pages/create-character/components/skills';
 import { ModalRace } from '../pages/create-character/modal/ModalRace';
 
 
 //Services
-import {DragulaModule, DragulaService } from "ng2-dragula/ng2-dragula";
+import { DragulaModule, DragulaService } from "ng2-dragula/ng2-dragula";
 
 import { SocketProvider } from '../providers/SocketProviders/SocketProvider';
 import { GameMain } from '../providers/GameService/GameMain';
@@ -37,9 +38,11 @@ import { GameMain } from '../providers/GameService/GameMain';
 import { SettingsProvider } from '../providers/OptionProviders/SettingsProvider';
 import { AuthApiProvider } from '../providers/SystemProviders/AuthApiProvider';
 
+import { CharacterProvider } from '../providers/CharacterProviders/CharacterProvider';
 import { CharacterApiProvider } from '../providers/CharacterProviders/CharacterApiProvider';
 import { CharacterDisplayProvider } from '../providers/CharacterProviders/CharacterDisplayProvider';
 import { CharacterStatsProviders } from '../providers/CharacterProviders/CharacterStatsProviders';
+
 import { RaceApiProvider } from '../providers/RaceProviders/RaceApiProvider';
 
 @NgModule({
@@ -57,6 +60,7 @@ import { RaceApiProvider } from '../providers/RaceProviders/RaceApiProvider';
     CreatCharacterRace,
     CreatCharacterStats,
     CreateCharacterGeneder,
+    CreateCharacterSkills,
     ModalRace,
   ],
   imports: [
@@ -88,6 +92,7 @@ import { RaceApiProvider } from '../providers/RaceProviders/RaceApiProvider';
     AuthApiProvider,
     CharacterApiProvider,
     RaceApiProvider,
+    CharacterProvider,
     CharacterDisplayProvider,
     CharacterStatsProviders,
     DragulaService,

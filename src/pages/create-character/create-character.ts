@@ -3,7 +3,9 @@ import { NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { FormWizardModule } from 'angular2-wizard';
 
+import { CharacterProvider } from '../../providers/CharacterProviders/CharacterProvider';
 import { CharacterApiProvider } from '../../providers/CharacterProviders/CharacterApiProvider';
+
 import { iCharcter } from '../../interfaces/iCharacter';
 import { CharactersPage } from '../characters/characters';
 
@@ -12,6 +14,7 @@ import { CreatCharacterClasses } from './components/classes';
 import { CreatCharacterRace } from './components/race';
 import { CreatCharacterStats } from './components/stats';
 import { CreateCharacterGeneder } from './components/gender';
+import { CreateCharacterSkills } from './components/skills';
 
 @Component({
   selector: 'page-create-character',
@@ -20,6 +23,17 @@ import { CreateCharacterGeneder } from './components/gender';
 export class CreateCharacter {
 
   isCompleted: boolean = false;
+  stats: any[];
+
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public storage: Storage,
+    public characterProvider: CharacterProvider,
+    public characterApiService: CharacterApiProvider) {
+    this.NewCharcter = this.characterProvider.CreateEmptyCharacter();
+    this.characterProvider.setCurrentCharacter(this.NewCharcter);
+  }
 
   onStep1Next(event) {
     console.log('Step1 - Next');
@@ -50,24 +64,7 @@ export class CreateCharacter {
   NewCharcter: iCharcter;
 
 
-  constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    public storage: Storage,
-    public characterService: CharacterApiProvider) {
-    this.NewCharcter = {
-      name: null,
-      playerId: null,
-      cha: 0,
-      con: 0,
-      dex: 0,
-      int: 0,
-      str: 0,
-      wis: 0,
-      Inventory: []
-    }
 
-  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CreateCharacter');
@@ -89,7 +86,7 @@ export class CreateCharacter {
     this.storage.get('playerId').then((value) => {
       _self.NewCharcter.playerId = value;
 
-      _self.characterService.createCharacter(_self.NewCharcter).then((result) => {
+      _self.characterApiService.createCharacter(_self.NewCharcter).then((result) => {
         this.navCtrl.setRoot(CharactersPage);
       }, (err) => {
         if (err.stats = 422) {
@@ -103,36 +100,39 @@ export class CreateCharacter {
 
   handleUpdateCharacterName(characterName) {
     this.NewCharcter.name = characterName
+    this.characterProvider.setCurrentCharacter(this.NewCharcter);
+
   }
 
   handleUpdateCharacterGender(characterGender) {
     this.NewCharcter.gender = characterGender;
   }
   handleUpdateCharacterStats(stats) {
+    this.stats = stats;
     for (let x = 0; x < stats.length; x++) {
       switch (stats[x].key) {
         case "str":
-        this.NewCharcter.str = stats[x].value;
-        break;
+          this.NewCharcter.str = stats[x].value;
+          break;
         case "dex":
-        this.NewCharcter.dex = stats[x].value;
-        break;
+          this.NewCharcter.dex = stats[x].value;
+          break;
         case "con":
-        this.NewCharcter.con = stats[x].value;
-        break;
+          this.NewCharcter.con = stats[x].value;
+          break;
         case "int":
-        this.NewCharcter.int = stats[x].value;
-        break;
+          this.NewCharcter.int = stats[x].value;
+          break;
         case "wis":
-        this.NewCharcter.wis = stats[x].value;
-        break;
+          this.NewCharcter.wis = stats[x].value;
+          break;
         case "cha":
-        this.NewCharcter.cha = stats[x].value;
-        break;
+          this.NewCharcter.cha = stats[x].value;
+          break;
 
       }
     }
-
+    this.characterProvider.setCurrentCharacter(this.NewCharcter);
   }
 
   validateData() {

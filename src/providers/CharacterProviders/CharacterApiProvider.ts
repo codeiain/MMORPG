@@ -14,11 +14,10 @@ export class CharacterApiProvider {
 
   createCharacter(character) {
     return new Promise((resolve, reject) => {
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      headers.append('Authorization', this.authService.token);
+      let headers = this.authService.createAuthorizationHeaders();
 
-      this.http.post('http://localhost:9001/api/characters/createCharacter', JSON.stringify(character), {headers: headers})
+
+      this.http.post('http://localhost:9001/api/characters/createCharacter', JSON.stringify(character), { headers: headers })
         .map(res => res.json())
         .subscribe(res => {
           resolve(res);
@@ -28,13 +27,12 @@ export class CharacterApiProvider {
     });
   }
 
-  getChracters(playerId){
-    return new Promise((resolve, reject)=>{
-      let headers = new Headers();
-      headers.append('Content-Type', 'application/json');
-      headers.append('Authorization', this.authService.token);
+  getChracters(playerId) {
+    return new Promise((resolve, reject) => {
+      let headers = this.authService.createAuthorizationHeaders();
 
-      this.http.post('http://localhost:9001/api/characters/getPlayerCharacters', JSON.stringify({playerId:playerId}), {headers: headers})
+
+      this.http.post('http://localhost:9001/api/characters/getPlayerCharacters', JSON.stringify({ playerId: playerId }), { headers: headers })
         .map(res => res.json())
         .subscribe(res => {
           resolve(res);
@@ -44,19 +42,18 @@ export class CharacterApiProvider {
     });
   }
 
-  verifyCharacterName(name){
-    return new Promise((resolve, reject)=>{
-      let headers = new Headers
-      headers.append('Content-Type','application/json');
-      headers.append('Authorization', this.authService.token);
+  verifyCharacterName(name) {
+    return new Promise((resolve, reject) => {
+      let headers = this.authService.createAuthorizationHeaders();
 
-      this.http.post('http://localhost:9001/api/characters/validateName', JSON.stringify({characterName:name}), {headers:headers})
-      .map(res=> res.json())
-      .subscribe(res=>{
-        resolve(res);
-      }, (err)=>{
-        reject(err);
-      });
+
+      this.http.post('http://localhost:9001/api/characters/validateName', JSON.stringify({ characterName: name }), { headers: headers })
+        .map(res => res.json())
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
     });
   }
 }

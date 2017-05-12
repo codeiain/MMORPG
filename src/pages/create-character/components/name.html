@@ -1,4 +1,6 @@
 <div>
-    CHARACTER NAME
-    <input type="text" [ngModel]="characterName" (ngModelChange)="valuechange($event)" required/>
+
+    <div class="form-group" [ngClass]="isValidGroup">
+        <input type="text" [ngModel]="characterName" (ngModelChange)="valuechange($event)" required class="form-control " [ngClass]="isValid" id="inputSuccess1">
+    </div>
 </div>

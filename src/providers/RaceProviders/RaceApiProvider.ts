@@ -12,9 +12,8 @@ export class RaceApiProvider {
 
     getAllRaces() {
         return new Promise((resolve, reject) => {
-            let headers = new Headers();
-            headers.append('Content-Type', 'application/json');
-            headers.append('Authorization', this.authService.token);
+            let headers = this.authService.createAuthorizationHeaders();
+
 
             this.http.post('http://localhost:9001/api/races/getAllRaces',"",{headers:headers})
             .map(res=>res.json())

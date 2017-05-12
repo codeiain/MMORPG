@@ -82,4 +82,12 @@ export class AuthApiProvider {
   logout() {
     this.storage.set('token', '');
   }
+
+  createAuthorizationHeaders() {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', this.token);
+    return headers;
+  }
+
 }

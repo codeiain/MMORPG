@@ -26,7 +26,13 @@
         <ion-icon name="plus"></ion-icon>
         New Character
       </button>
+            <button [disabled]="!CanEnter" ion-button icon-left (click)="EnterWorld()">
+        <ion-icon name="plus"></ion-icon>
+        Enter World
+      </button>
         </div>
-        <div class="middle-container"><canvas id="displayCharacter"></canvas></div>
+        <div class="middle-container">
+            <canvas id="displayCharacter"></canvas>
+        </div>
     </div>
 </ion-content>

@@ -7,6 +7,8 @@ import { Http, Headers, HttpModule } from '@angular/http';
 import { Storage, IonicStorageModule } from '@ionic/storage';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { FormWizardModule } from 'angular2-wizard';
+import {RoundProgressModule} from 'angular-svg-round-progressbar';
 
 //Pages
 import { MyApp } from './app.component';
@@ -23,20 +25,29 @@ import { CreatCharacterName } from '../pages/create-character/components/name'
 import { CreatCharacterClasses } from '../pages/create-character/components/classes'
 import { CreatCharacterRace } from '../pages/create-character/components/race';
 import { CreatCharacterStats } from '../pages/create-character/components/stats';
+import { CreateCharacterGeneder } from '../pages/create-character/components/gender';
+import { CreateCharacterSkills } from '../pages/create-character/components/skills';
 import { ModalRace } from '../pages/create-character/modal/ModalRace';
 
 
 //Services
+import { DragulaModule, DragulaService } from "ng2-dragula/ng2-dragula";
+
 import { SocketProvider } from '../providers/SocketProviders/SocketProvider';
 import { GameMain } from '../providers/GameService/GameMain';
 
 import { SettingsProvider } from '../providers/OptionProviders/SettingsProvider';
 import { AuthApiProvider } from '../providers/SystemProviders/AuthApiProvider';
 
+import { CharacterProvider } from '../providers/CharacterProviders/CharacterProvider';
 import { CharacterApiProvider } from '../providers/CharacterProviders/CharacterApiProvider';
 import { CharacterDisplayProvider } from '../providers/CharacterProviders/CharacterDisplayProvider';
+import { CharacterStatsProviders } from '../providers/CharacterProviders/CharacterStatsProviders';
 
 import { RaceApiProvider } from '../providers/RaceProviders/RaceApiProvider';
+
+import { ClassesApiProvider } from '../providers/ClassesProviders/ClassesApiProvider';
+
 
 @NgModule({
   declarations: [
@@ -52,13 +63,18 @@ import { RaceApiProvider } from '../providers/RaceProviders/RaceApiProvider';
     CreatCharacterClasses,
     CreatCharacterRace,
     CreatCharacterStats,
-    ModalRace
+    CreateCharacterGeneder,
+    CreateCharacterSkills,
+    ModalRace,
   ],
   imports: [
     BrowserModule,
     HttpModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
+    FormWizardModule,
+    DragulaModule,
+    RoundProgressModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -81,7 +97,11 @@ import { RaceApiProvider } from '../providers/RaceProviders/RaceApiProvider';
     AuthApiProvider,
     CharacterApiProvider,
     RaceApiProvider,
+    CharacterProvider,
     CharacterDisplayProvider,
+    CharacterStatsProviders,
+    DragulaService,
+    ClassesApiProvider,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })

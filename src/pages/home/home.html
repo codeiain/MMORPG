@@ -9,6 +9,31 @@
 
 <ion-content>
   <img id="viseur" src="assets/viseur.png" />
-  <!--<canvas id="guiCanvas"></canvas>-->
   <canvas id="renderCanvas"></canvas>
+  <div class="bottom">
+    <div class="row">
+      <div class="col border">
+        left
+      </div>
+      <div class="col" style="padding:0px;">
+        <div id="home-button-bar2" class="button-bar foot">
+          <button id="home-button7" class="button button-light  button-block">item 1</button>
+          <button id="home-button10" class="button button-light  button-block">item 2</button>
+          <button id="home-button11" class="button button-light  button-block">item 3</button>
+          <button id="home-button12" style="border-radius:100px;" class="button button-dark  button-block">
+            <round-progress [stroke]="10" [color]="'#7f0000'" [background]="'#444'" [current]="character.hp" [max]="character.maxhp" [responsive]="false" [radius]="100" style="z-index: 100;">
+            </round-progress>
+            <round-progress [stroke]="10" [color]="'#00007F'"  [background]="'#444'" [current]="20" [max]="100" [responsive]="false" [radius]="87" style="bottom: 187px;z-index: 50;left: 13px;"></round-progress>
+          </button>
+          <button id="home-button13" class="button button-light  button-block">item 4</button>
+          <button id="home-button8" class="button button-light  button-block">item 5</button>
+          <button id="home-button9" class="button button-light  button-block">item 6</button>
+        </div>
+      </div>
+      <div class="col border">
+        right
+      </div>
+    </div>
+
+  </div>
 </ion-content>

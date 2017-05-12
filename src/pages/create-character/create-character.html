@@ -16,47 +16,40 @@
 <ion-content padding>
     <div class="main-container">
         <div class="left-container">
-
+        <canvas id="displayCharacter1"></canvas>
         </div>
         <div class="right-container">
-            <ion-list>
-                <div>
-                    <ion-item class="item-stable" (click)="toggleGroup('name')" [ngClass]="{active: isGroupShown('name')}">
-                        <i class="icon" [ngClass]="isGroupShown('name') ? 'ion-minus' : 'ion-plus'"></i> &nbsp; Character Name
-                    </ion-item>
-                    <ion-item class="item-accordion" [hidden]="!isGroupShown('name')">
-                        <page-create-character-name (updateCharacterName)="handleUpdateCharacterName($event)"></page-create-character-name>
-                    </ion-item>
-                </div>
-                <div>
-                    <ion-item class="item-stable" (click)="toggleGroup('race')" [ngClass]="{active: isGroupShown('race')}">
-                        <i class="icon" [ngClass]="isGroupShown('race') ? 'ion-minus' : 'ion-plus'"></i> &nbsp; Character Race
-                    </ion-item>
-                    <ion-item class="item-accordion" [hidden]="!isGroupShown('race')">
-                        <page-create-character-race></page-create-character-race>
-                    </ion-item>
-                </div>
-                <div>
-                    <ion-item class="item-stable" (click)="toggleGroup('class')" [ngClass]="{active: isGroupShown('class')}">
-                        <i class="icon" [ngClass]="isGroupShown('class') ? 'ion-minus' : 'ion-plus'"></i> &nbsp; Character Class
-                    </ion-item>
-                    <ion-item class="item-accordion" [hidden]="!isGroupShown('class')">
-                        <page-create-character-classes></page-create-character-classes>
-                    </ion-item>
-                </div>
-                <div>
-                    <ion-item class="item-stable" (click)="toggleGroup('stats')" [ngClass]="{active: isGroupShown('stats')}">
-                        <i class="icon" [ngClass]="isGroupShown('stats') ? 'ion-minus' : 'ion-plus'"></i> &nbsp; Character Stats
-                    </ion-item>
-                    <ion-item class="item-accordion" [hidden]="!isGroupShown('stats')">
-                        <page-create-character-classes></page-create-character-classes>
-                    </ion-item>
-                </div>
-            </ion-list>
-            <button ion-button icon-left (click)="save()">
-        <ion-icon name="plus"></ion-icon>
-        Save Character
-      </button>
+            <form-wizard>
+                <wizard-step [title]="'Name'">
+                    <h1>Name</h1>
+                    <page-create-character-name (updateCharacterName)="handleUpdateCharacterName($event)"></page-create-character-name>
+                </wizard-step>
+                <wizard-step [title]="'Gender'">
+                    <h1>Gender</h1>
+                    <page-create-character-gender (updateCharacterGender)="handleUpdateCharacterGender($event)"></page-create-character-gender>
+                </wizard-step>
+                <wizard-step [title]="'Stats'">
+                    <h1>Stats</h1>
+                    <page-create-character-stats (updateCharacterStats)="handleUpdateCharacterStats($event)"></page-create-character-stats>
+                </wizard-step>
+                <wizard-step [title]="'Race'" >
+                    <h1>Race</h1>
+                    <page-create-character-race></page-create-character-race>
+                </wizard-step>
+                <wizard-step [title]="'Class'" (onNext)="preSkillStep($event)">
+                    <h1>Class</h1>
+                    <page-create-character-classes></page-create-character-classes>
+                </wizard-step>
+                <wizard-step [title]="'Skills'" [showPrev]="true" (onComplete)="onComplete($event)">
+                    <page-create-character-skills></page-create-character-skills>
+                    <button ion-button icon-left (click)="save()">
+                            <ion-icon name="plus"></ion-icon>
+                            Save Character
+                            </button>
+                </wizard-step>
+                <wizard-step [hidden]="true">
+                </wizard-step>
+            </form-wizard>
         </div>
     </div>
 </ion-content>

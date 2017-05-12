@@ -4,6 +4,8 @@ import { CharacterApiProvider } from '../../providers/CharacterProviders/Charact
 import { Storage } from '@ionic/storage';
 import { CreateCharacter } from '../create-character/create-character';
 import { CharacterDisplayProvider } from '../../providers/CharacterProviders/CharacterDisplayProvider'
+import { CharacterProvider } from '../../providers/CharacterProviders/CharacterProvider'
+import { HomePage } from '../home/home'
 
 @Component({
   selector: 'page-characters',
@@ -12,14 +14,17 @@ import { CharacterDisplayProvider } from '../../providers/CharacterProviders/Cha
 export class CharactersPage {
 
   characters: any;
-  playerId: String
+  playerId: String;
+  SelectedCharacter: any;
+  CanEnter: boolean = false;
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public characterService: CharacterApiProvider,
     public storage: Storage,
-    public displayService: CharacterDisplayProvider
+    public displayService: CharacterDisplayProvider,
+    public characterProvider:CharacterProvider
   ) {
 
   }
@@ -32,7 +37,7 @@ export class CharactersPage {
         this.characters = data.characters;
         let canvas = <HTMLCanvasElement>document.getElementById("displayCharacter");
         this.displayService.init(canvas);
-        this.displayService.displayMesh("Female","DanceMoves");
+        this.displayService.displayMesh("Female", "DanceMoves");
       }, (err) => {
         console.log("not allowed");
       });
@@ -41,5 +46,14 @@ export class CharactersPage {
 
   newCharacter() {
     this.navCtrl.push(CreateCharacter);
-  }
+  };
+
+  itemSelected(character) {
+    this.CanEnter = true;
+    this.characterProvider.setCurrentCharacter(character);
+  };
+  EnterWorld() {
+
+    this.navCtrl.setRoot(HomePage);
+  };
 }

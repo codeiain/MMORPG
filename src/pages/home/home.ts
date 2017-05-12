@@ -4,7 +4,9 @@ import { SocketProvider } from '../../providers/SocketProviders/SocketProvider';
 import { Game } from '../../providers/GameService/Game'
 import { ModalIntro } from './Modal/ModalIntro';
 import { SettingsProvider } from '../../providers/OptionProviders/SettingsProvider'
-
+import { RoundProgressModule } from 'angular-svg-round-progressbar';
+import { CharacterProvider } from '../../providers/CharacterProviders/CharacterProvider';
+import { iCharcter } from '../../interfaces/iCharacter';
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -12,9 +14,10 @@ import { SettingsProvider } from '../../providers/OptionProviders/SettingsProvid
 export class HomePage {
 
   private game: Game;
+  private character: iCharcter
 
-  constructor(public settings: SettingsProvider, public navCtrl: NavController, private socket: SocketProvider, public menuCtrl: MenuController, public events: Events, public modalCtrl: ModalController) {
-
+  constructor(public settings: SettingsProvider, public navCtrl: NavController, private socket: SocketProvider, public menuCtrl: MenuController, public events: Events, public modalCtrl: ModalController, public characterProvider: CharacterProvider) {
+    this.character = characterProvider.getCurrentCharacter();
   }
   ngOnInit() {
     const modal = this.modalCtrl.create(ModalIntro);

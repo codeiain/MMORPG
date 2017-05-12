@@ -11,10 +11,10 @@ import { CharacterApiProvider } from '../../../providers/CharacterProviders/Char
 export class CreatCharacterName {
   @Output() updateCharacterName = new EventEmitter();
   isValid: string = "form-control-danger";
-  isValidGroup: string = "has-danger";//
-  constructor(public apiProvider: CharacterApiProvider) {
+  isValidGroup: string = "has-danger";
 
-  }
+
+  constructor(public apiProvider: CharacterApiProvider) { }
 
   valuechange(newValue) {
     var _self = this;

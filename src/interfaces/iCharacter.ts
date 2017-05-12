@@ -7,6 +7,10 @@ export interface iCharcter {
     level?: number;
     race?: string;
     gender?: string;
+    hp: number;
+    maxhp:number;
+    xp:number;
+    maxXp:number;
     str: number;
     dex: number;
     con: number;

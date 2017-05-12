@@ -14,7 +14,11 @@ export class CharacterProvider {
             int: 0,
             str: 0,
             wis: 0,
-            Inventory: []
+            Inventory: [],
+            hp: 100,
+            maxhp: 100,
+            xp: 10,
+            maxXp: 100
         }
     }
 
@@ -331,7 +335,7 @@ export class CharacterProvider {
                 name: "Sense Motive",
                 proficent: false,
                 baseSkill: "wis",
-                value:this.calculateModifier(this.currentCharacter.wis)
+                value: this.calculateModifier(this.currentCharacter.wis)
             },
             {
                 name: "Sleight of Hand",

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { FormWizardModule } from 'angular2-wizard';
@@ -15,13 +15,13 @@ import { CreatCharacterRace } from './components/race';
 import { CreatCharacterStats } from './components/stats';
 import { CreateCharacterGeneder } from './components/gender';
 import { CreateCharacterSkills } from './components/skills';
-
+import { CharacterDisplayProvider } from '../../providers/CharacterProviders/CharacterDisplayProvider'
 @Component({
   selector: 'page-create-character',
   templateUrl: 'create-character.html',
 })
 export class CreateCharacter {
-
+  @ViewChild(CreateCharacterSkills) mySon: CreateCharacterSkills;
   isCompleted: boolean = false;
   stats: any[];
 
@@ -30,35 +30,19 @@ export class CreateCharacter {
     public navParams: NavParams,
     public storage: Storage,
     public characterProvider: CharacterProvider,
-    public characterApiService: CharacterApiProvider) {
+    public characterApiService: CharacterApiProvider, public displayService: CharacterDisplayProvider) {
     this.NewCharcter = this.characterProvider.CreateEmptyCharacter();
     this.characterProvider.setCurrentCharacter(this.NewCharcter);
   }
 
-  onStep1Next(event) {
-    console.log('Step1 - Next');
-  }
-
-  onStep2Next(event) {
-    console.log('Step2 - Next');
-  }
-
-  onStep3Next(event) {
-    console.log('Step3 - Next');
-  }
-  onStep4Next(event) {
-    console.log('Step4 - Next');
-  }
-  onStep5Next(event) {
-    console.log('Step4 - Next');
+  preSkillStep(event) {
+    this.mySon.updateSkills();
+    //this.characterProvider.getSkills();
   }
   onComplete(event) {
     this.isCompleted = true;
   }
 
-  onStepChanged(step) {
-    console.log('Changed to ' + step.title);
-  }
 
   shownGroup = null;
   NewCharcter: iCharcter;
@@ -68,6 +52,9 @@ export class CreateCharacter {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad CreateCharacter');
+    let canvas = <HTMLCanvasElement>document.getElementById("displayCharacter1");
+    this.displayService.init(canvas);
+    this.displayService.displayMesh("Female", "DanceMoves");
   }
 
   toggleGroup(group) {
@@ -106,6 +93,12 @@ export class CreateCharacter {
 
   handleUpdateCharacterGender(characterGender) {
     this.NewCharcter.gender = characterGender;
+    if (characterGender == "Male") {
+      this.displayService.displayMesh("Male", "Dude");
+    } else {
+      this.displayService.displayMesh("Female", "DanceMoves");
+    }
+
   }
   handleUpdateCharacterStats(stats) {
     this.stats = stats;

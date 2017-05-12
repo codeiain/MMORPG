@@ -6,14 +6,20 @@ import BABYLON from 'babylonjs';
 export class CharacterStatsProviders {
 
     constructor(){}
+    regenerated:boolean = false;
 
     public getStats():Array<number> {
         let stats = []
 
         for (var x = 0; x != 6; x++) {
-            stats.push(this.generateStat());
-        }
+            var sta = this.generateStat();
+            if (sta < 10 && this.regenerated == false){
+                sta = this.generateStat();
+                this.regenerated = true;
+            }
+            stats.push(sta);
 
+        }
         return stats;
     }
 

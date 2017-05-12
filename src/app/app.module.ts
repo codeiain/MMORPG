@@ -8,6 +8,7 @@ import { Storage, IonicStorageModule } from '@ionic/storage';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { FormWizardModule } from 'angular2-wizard';
+import {RoundProgressModule} from 'angular-svg-round-progressbar';
 
 //Pages
 import { MyApp } from './app.component';
@@ -45,6 +46,9 @@ import { CharacterStatsProviders } from '../providers/CharacterProviders/Charact
 
 import { RaceApiProvider } from '../providers/RaceProviders/RaceApiProvider';
 
+import { ClassesApiProvider } from '../providers/ClassesProviders/ClassesApiProvider';
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -69,7 +73,8 @@ import { RaceApiProvider } from '../providers/RaceProviders/RaceApiProvider';
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
     FormWizardModule,
-    DragulaModule
+    DragulaModule,
+    RoundProgressModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -96,6 +101,7 @@ import { RaceApiProvider } from '../providers/RaceProviders/RaceApiProvider';
     CharacterDisplayProvider,
     CharacterStatsProviders,
     DragulaService,
+    ClassesApiProvider,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })

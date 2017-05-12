@@ -1,7 +1,9 @@
 <div>
-    <div *ngFor="let skill of skills">
-        <span>{{skill.name}}</span>
-        <span [innerHtml]="skill.value"></span>
-        <ion-checkbox [checked]="skill.proficent"></ion-checkbox>
+    <div>
+        <h2>Skills</h2>
+        <div *ngFor="let skill of skills" class="boxSkills">
+            <p>{{skill.name}}</p>
+            <p class="values" [innerHtml]="skill.value"></p>
+        </div>
     </div>
 </div>

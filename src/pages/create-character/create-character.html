@@ -16,30 +16,32 @@
 <ion-content padding>
     <div class="main-container">
         <div class="left-container">
-
+        <canvas id="displayCharacter1"></canvas>
         </div>
         <div class="right-container">
             <form-wizard>
-                <wizard-step [title]="'Name'" (onNext)="onStep1Next($event)">
+                <wizard-step [title]="'Name'">
                     <h1>Name</h1>
                     <page-create-character-name (updateCharacterName)="handleUpdateCharacterName($event)"></page-create-character-name>
                 </wizard-step>
-                <wizard-step [title]="'Gender'" (onNext)="onStep2Next($event)">
+                <wizard-step [title]="'Gender'">
                     <h1>Gender</h1>
                     <page-create-character-gender (updateCharacterGender)="handleUpdateCharacterGender($event)"></page-create-character-gender>
                 </wizard-step>
-                <wizard-step [title]="'Stats'" (onNext)="onStep3Next($event)">
+                <wizard-step [title]="'Stats'">
                     <h1>Stats</h1>
                     <page-create-character-stats (updateCharacterStats)="handleUpdateCharacterStats($event)"></page-create-character-stats>
                 </wizard-step>
-                <wizard-step [title]="'Race'" (onNext)="onStep5Next($event)">
+                <wizard-step [title]="'Race'" >
                     <h1>Race</h1>
                     <page-create-character-race></page-create-character-race>
                 </wizard-step>
-                <wizard-step [title]="'Class'" [showPrev]="true" (onComplete)="onComplete($event)">
+                <wizard-step [title]="'Class'" (onNext)="preSkillStep($event)">
                     <h1>Class</h1>
                     <page-create-character-classes></page-create-character-classes>
-
+                </wizard-step>
+                <wizard-step [title]="'Skills'" [showPrev]="true" (onComplete)="onComplete($event)">
+                    <page-create-character-skills></page-create-character-skills>
                     <button ion-button icon-left (click)="save()">
                             <ion-icon name="plus"></ion-icon>
                             Save Character

@@ -1,21 +1,17 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 
-
-
 @Component({
     selector: 'page-create-character-gender',
     templateUrl: 'gender.html'
 })
-export class CreateCharacterGeneder{
+export class CreateCharacterGeneder {
 
     @Output() updateCharacterGender = new EventEmitter();
-    gender:string;
+    gender: string;
 
-    constructor(){
+    constructor() { }
 
-    }
-
-    setGender(value:string){
+    setGender(value: string) {
         this.gender = value;
         this.updateCharacterGender.emit(value);
     }

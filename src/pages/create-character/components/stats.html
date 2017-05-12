@@ -4,43 +4,37 @@
             <div id="stats">
                 <div class="stat">
                     <div class="header">Str</div>
-                    <div class="inner" [dragula]='"first-bag"' [dragulaModel]="str">
+                    <div class="inner" [dragula]='"first-bag"' [dragulaModel]="str" data-stat="str">
                     </div>
                 </div>
                 <div class="stat">
                     <div class="header">Dex</div>
-                    <div class="inner" [dragula]='"first-bag"' [dragulaModel]="dex">
+                    <div class="inner" [dragula]='"first-bag"' [dragulaModel]="dex" data-stat="dex">
                     </div>
                 </div>
                 <div class="stat">
                     <div class="header">Con</div>
-                    <div class="inner" [dragula]='"first-bag"' [dragulaModel]="con">
+                    <div class="inner" [dragula]='"first-bag"' [dragulaModel]="con" data-stat="con">
                     </div>
                 </div>
                 <div class="stat">
                     <div class="header">Int</div>
-                    <div class="inner" [dragula]='"first-bag"' [dragulaModel]="int">
+                    <div class="inner" [dragula]='"first-bag"' [dragulaModel]="int" data-stat="int">
                     </div>
                 </div>
                 <div class="stat">
                     <div class="header">Wis</div>
-                    <div class="inner" [dragula]='"first-bag"' [dragulaModel]="wis">
+                    <div class="inner" [dragula]='"first-bag"' [dragulaModel]="wis" data-stat="wis">
                     </div>
                 </div>
                 <div class="stat">
                     <div class="header">Cha</div>
-                    <div class="inner" [dragula]='"first-bag"' [dragulaModel]="cha">
+                    <div class="inner" [dragula]='"first-bag"' [dragulaModel]="cha" data-stat="cha">
                     </div>
                 </div>
             </div>
             <div style="clear:both"></div>
-            <div>
-                <h2>Skills</h2>
-                <div *ngFor="let skill of skills" class="boxSkills">
-                    <p>{{skill.name}}</p>
-                    <p class="values" [innerHtml]="skill.value"></p>
-                </div>
-            </div>
+            <button (click)="regenerateStats()">Roll new stats</button>
         </div>
         <div class="right-container">
             <div [dragula]='"first-bag"' class="tray">

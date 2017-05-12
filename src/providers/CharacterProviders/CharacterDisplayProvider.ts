@@ -38,13 +38,12 @@ export class CharacterDisplayProvider {
 
     displayMesh(folder:string, name:string){
         var _self = this;
+        _self._scene.meshes = [];
         BABYLON.SceneLoader.ImportMesh("","assets/models/"+folder+"/",name+".babylon", this._scene, function (newMeshes){
-            newMeshes[0].position.y -=35;
-            
-            if (folder == "Female"){
                 _self._camera.radius = 200;
-                newMeshes[0].position.y -=45;
-            }            
+                newMeshes[0].position.y -=75; 
+                console.log(newMeshes[0].scaling);
+                console.log(newMeshes[0].getBoundingInfo().boundingBox.extendSize);
         });
     }
 

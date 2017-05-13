@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpModule, Headers, Http } from '@angular/http';
 import { Storage } from '@ionic/storage';
 import 'rxjs/add/operator/map';
-
+import { ConfigProvider } from './ConfigProvider'
 /*
   Generated class for the Auth provider.
 
@@ -13,9 +13,12 @@ import 'rxjs/add/operator/map';
 export class AuthApiProvider {
 
   public token: any;
+  public apiServer: string;
 
-  constructor(public http: Http, public storage: Storage) {
-
+  constructor(public http: Http, public storage: Storage, public config: ConfigProvider) {
+    let env: string = config.getEnv('env');
+    console.log(env);
+    this.apiServer = config.getConfig('apiServer');
   }
 
   checkAuthentication() {
@@ -25,7 +28,7 @@ export class AuthApiProvider {
         let headers = new Headers();
         headers.append('Authorzation', this.token);
 
-        this.http.get('http://localhost:9001/api/auth/protected', { headers: headers })
+        this.http.get(this.apiServer + '/auth/protected', { headers: headers })
           .subscribe(res => {
             resolve(res);
           }, (err) => {
@@ -42,7 +45,7 @@ export class AuthApiProvider {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
 
-      this.http.post('http://localhost:9001/api/auth/register', JSON.stringify(details), { headers: headers })
+      this.http.post(this.apiServer + '/auth/register', JSON.stringify(details), { headers: headers })
         .subscribe(res => {
           let data = res.json();
           this.token = data.token;
@@ -61,7 +64,7 @@ export class AuthApiProvider {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
 
-      this.http.post('http://localhost:9001/api/auth/login', JSON.stringify(credentials), { headers: headers })
+      this.http.post(this.apiServer + '/auth/login', JSON.stringify(credentials), { headers: headers })
         .subscribe(res => {
 
           let data = res.json();

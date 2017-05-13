@@ -1,14 +1,14 @@
 
 //Angular and ionic components
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
+import { ErrorHandler, NgModule, APP_INITIALIZER } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { Http, Headers, HttpModule } from '@angular/http';
 import { Storage, IonicStorageModule } from '@ionic/storage';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { FormWizardModule } from 'angular2-wizard';
-import {RoundProgressModule} from 'angular-svg-round-progressbar';
+import { RoundProgressModule } from 'angular-svg-round-progressbar';
 
 //Pages
 import { MyApp } from './app.component';
@@ -47,7 +47,7 @@ import { CharacterStatsProviders } from '../providers/CharacterProviders/Charact
 import { RaceApiProvider } from '../providers/RaceProviders/RaceApiProvider';
 
 import { ClassesApiProvider } from '../providers/ClassesProviders/ClassesApiProvider';
-
+import { ConfigProvider } from '../providers/SystemProviders/ConfigProvider';
 
 @NgModule({
   declarations: [
@@ -102,7 +102,9 @@ import { ClassesApiProvider } from '../providers/ClassesProviders/ClassesApiProv
     CharacterStatsProviders,
     DragulaService,
     ClassesApiProvider,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    ConfigProvider,
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    { provide: APP_INITIALIZER, useFactory: (config: ConfigProvider) => () => config.load(), deps: [ConfigProvider], multi: true }
   ]
 })
 export class AppModule { }

@@ -22,5 +22,9 @@ module.exports = {
     copyBootstrapCSS: {
         src: '{{ROOT}}/node_modules/bootstrap/dist/css/bootstrap.min.css',
         dest: '{{WWW}}/assets/css/'
+    },
+    copyConfigs:{
+        src: '{{ROOT}}/config/**/*',
+        dest: '{{WWW}}/config/'
     }
 };

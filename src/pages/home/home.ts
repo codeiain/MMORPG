@@ -18,10 +18,12 @@ export class HomePage {
 
   constructor(public settings: SettingsProvider, public navCtrl: NavController, private socket: SocketProvider, public menuCtrl: MenuController, public events: Events, public modalCtrl: ModalController, public characterProvider: CharacterProvider) {
     this.character = characterProvider.getCurrentCharacter();
+    this.initSockets();
   }
   ngOnInit() {
     const modal = this.modalCtrl.create(ModalIntro);
     modal.present();
+    
   }
 
   initSockets() {

@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import * as io from 'socket.io-client';
+import { ConfigProvider } from '../SystemProviders/ConfigProvider'
 
 /*
   Generated class for the SocketService provider.
@@ -17,7 +18,8 @@ export class SocketProvider {
   data: any = null;
   socketHost: string = 'http://localhost:3000';
 
-  constructor() {
+  constructor(public config: ConfigProvider) {
+    this.socketHost = config.getConfig('socketServer'); 
     this.socketService = Observable.create(observer => {
         this.socketObserver = observer;
       });

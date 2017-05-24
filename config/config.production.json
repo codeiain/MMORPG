@@ -1,0 +1,5 @@
+{
+  "apiServer": "http://192.168.1.8:9001/api",
+  "socketServer": "http://localhost:9010",
+  "chatServer": "http://localhost:9020/"
+}

@@ -1,5 +1,19 @@
 modal-Intro {
+.background{
+	background-image: url(../assets/modalBackground.jpg);
+	background-size: contain;
+}
 
+.modalContent{
+	margin-top:30px;
+	margin-right: 45px;
+	margin-left:45px;
+	border:1px solid red;
+}
+
+.modalContent > p{
+	color: white;
+}
 
 ul {
 	list-style: none;

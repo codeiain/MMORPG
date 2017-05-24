@@ -1,0 +1,56 @@
+page-create-character {
+    #displayCharacter1 {
+        width: 100%;
+        height: 100%;
+        touch-action: none;
+    }
+    .item-md {
+        padding-left: 0px;
+    }
+    .character-holder {
+        height: 100%;
+        background-color: #FFF;
+        margin: 0;
+        padding: 0;
+    }
+    div {
+        box-sizing: border-box;
+    }
+    .main-container {
+        display: flex;
+        width: 100%;
+        height: 75%;
+        min-height: 100%;
+        border: 1px solid red;
+    }
+    .left-container {
+        flex: 0 1 50%;
+        min-height: 100%;
+        max-width: 50%;
+        border: 1px solid red;
+        padding: .5em;
+    }
+    .right-container {
+        flex: 0 1 50%;
+        min-height: 100%;
+        max-width: 50%;
+        border: 1px solid red;
+        padding: .5em;
+    }
+    .list .item.item-accordion {
+        line-height: 38px;
+        padding-top: 0;
+        padding-bottom: 0;
+        transition: 0.09s all linear;
+    }
+    .list .item.item-accordion.ng-hide {
+        line-height: 0px;
+    }
+    .list .item.item-accordion.ng-hide-add,
+    .list .item.item-accordion.ng-hide-remove {
+        display: block !important;
+    }
+    div.card-footer>button:nth-child(3) {
+        display: none;
+    }
+}

@@ -3,7 +3,7 @@ import { Player } from './Player';
 import { Arena } from './Arena';
 import { GameUtils } from './GameUtils';
 import { Injectable } from '@angular/core'
-import { SettingsService } from '../OptionServices/SettingsService'
+import { SettingsProvider } from '../OptionProviders/SettingsProvider'
 
 @Injectable()
 export class Game {
@@ -17,7 +17,7 @@ export class Game {
     public skyDome: BABYLON.Mesh;
     public octree : BABYLON.Octree<BABYLON.AbstractMesh>;
 
-    constructor(public settings: SettingsService) {
+    constructor(public settings: SettingsProvider) {
         // Resize the babylon engine when the window is resized
 
     }

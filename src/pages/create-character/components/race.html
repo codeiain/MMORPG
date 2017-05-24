@@ -1,0 +1,20 @@
+<div class="races">
+    <ion-list>
+        <div ion-item *ngFor="let type of races">
+            <ion-item class="item-stable" (click)="toggleGroup(type.key)" [ngClass]="{active: isGroupShown(type.key)}">
+                <i class="icon" [ngClass]="isGroupShown(type.key) ? 'ion-minus' : 'ion-plus'"></i>{{ type.key }}
+            </ion-item>
+            <ion-item class="item-accordion" [hidden]="!isGroupShown(type.key)">
+                <ion-grid>
+                    <ion-row *ngFor="let rows of type.values">
+
+                        <ion-col (click)="raceClicked(cell)" class="raceButton" width-20 *ngFor="let cell of rows">{{cell.name}}</ion-col>
+                    </ion-row>
+                </ion-grid>
+
+            </ion-item>
+            <b></b>
+        </div>
+    </ion-list>
+
+</div>

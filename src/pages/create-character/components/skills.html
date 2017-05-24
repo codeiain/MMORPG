@@ -1,0 +1,9 @@
+<div>
+    <div>
+        <h2>Skills</h2>
+        <div *ngFor="let skill of skills" class="boxSkills">
+            <p>{{skill.name}}</p>
+            <p class="values" [innerHtml]="skill.value"></p>
+        </div>
+    </div>
+</div>

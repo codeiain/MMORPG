@@ -1,0 +1,67 @@
+<div>
+    <div class="main-container">
+        <div class="left-container">
+            <div id="stats">
+                <div class="stat">
+                    <div class="header">Str</div>
+                    <div class="inner" [dragula]='"first-bag"' [dragulaModel]="str" data-stat="str">
+                    </div>
+                </div>
+                <div class="stat">
+                    <div class="header">Dex</div>
+                    <div class="inner" [dragula]='"first-bag"' [dragulaModel]="dex" data-stat="dex">
+                    </div>
+                </div>
+                <div class="stat">
+                    <div class="header">Con</div>
+                    <div class="inner" [dragula]='"first-bag"' [dragulaModel]="con" data-stat="con">
+                    </div>
+                </div>
+                <div class="stat">
+                    <div class="header">Int</div>
+                    <div class="inner" [dragula]='"first-bag"' [dragulaModel]="int" data-stat="int">
+                    </div>
+                </div>
+                <div class="stat">
+                    <div class="header">Wis</div>
+                    <div class="inner" [dragula]='"first-bag"' [dragulaModel]="wis" data-stat="wis">
+                    </div>
+                </div>
+                <div class="stat">
+                    <div class="header">Cha</div>
+                    <div class="inner" [dragula]='"first-bag"' [dragulaModel]="cha" data-stat="cha">
+                    </div>
+                </div>
+            </div>
+            <div style="clear:both"></div>
+            <button (click)="regenerateStats()">Roll new stats</button>
+        </div>
+        <div class="right-container">
+            <div [dragula]='"first-bag"' class="tray">
+                <div class="die" *ngFor="let item of stats" [attr.data-face]="item">
+                    <figure class="face face-1"></figure>
+                    <figure class="face face-2"></figure>
+                    <figure class="face face-3"></figure>
+                    <figure class="face face-4"></figure>
+                    <figure class="face face-5"></figure>
+                    <figure class="face face-6"></figure>
+                    <figure class="face face-7"></figure>
+                    <figure class="face face-8"></figure>
+                    <figure class="face face-9"></figure>
+                    <figure class="face face-10"></figure>
+                    <figure class="face face-11"></figure>
+                    <figure class="face face-12"></figure>
+                    <figure class="face face-13"></figure>
+                    <figure class="face face-14"></figure>
+                    <figure class="face face-15"></figure>
+                    <figure class="face face-16"></figure>
+                    <figure class="face face-17"></figure>
+                    <figure class="face face-18"></figure>
+                    <figure class="face face-19"></figure>
+                    <figure class="face face-20"></figure>
+                </div>
+                <br/>
+            </div>
+        </div>
+    </div>
+</div>
